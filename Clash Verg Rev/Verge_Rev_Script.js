@@ -2,6 +2,8 @@
 //
 // Clash Verg Rev Version ≥ 1.7.2
 //
+// 原地址: https://github.com/Repcz/Tool/blob/X/Clash/Meta/Verge_Rev_Script.js
+//
 // 最后更新时间: 2024-07-05 18:05
 
 // 规则集通用配置
