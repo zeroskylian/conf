@@ -22,14 +22,27 @@ const groupBaseOption = {
 
 // 程序入口
 function main(config) {
-  const proxyCount = config?.proxies?.length ?? 0;
+  // const proxyCount = config?.proxies?.length ?? 0;
+  // const proxyProviderCount =
+  //   typeof config?.["proxy-providers"] === "object"
+  //     ? Object.keys(config["proxy-providers"]).length
+  //     : 0;
+  // if (proxyCount === 0 && proxyProviderCount === 0) {
+  //   throw new Error("配置文件中未找到任何代理");
+  // }
+
+  const proxies = config?.proxies ?? [];
+  const proxyProvider = config?.["proxy-providers"];
+
+  const proxyCount = proxies.length ?? 0;
   const proxyProviderCount =
-    typeof config?.["proxy-providers"] === "object"
-      ? Object.keys(config["proxy-providers"]).length
-      : 0;
+    typeof proxyProvider === "object" ? Object.keys(proxyProvider).length : 0;
   if (proxyCount === 0 && proxyProviderCount === 0) {
     throw new Error("配置文件中未找到任何代理");
   }
+  config = {};
+  config.proxies = proxies;
+  config["proxy-providers"] = proxyProvider;
 
   // 覆盖通用配置
   config["mixed-port"] = "7893";
@@ -534,7 +547,7 @@ function main(config) {
     GitLab: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/zeroskylian/ios_rule_script/raw/master/rule/Clash/GitLab/GitLab.list",
+      url: "https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/GitLab/GitLab.list",
       path: "./rule-providers/GitLab.list",
     },
     Emby: {
