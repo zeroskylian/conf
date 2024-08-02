@@ -1,10 +1,8 @@
-// 参考 Verge 示例 Script 配置
+// 参考 Verge Rev 示例 Script 配置
 //
 // Clash Verg Rev Version ≥ 1.7.2
-//
 // 原地址: https://github.com/Repcz/Tool/blob/X/Clash/Meta/Verge_Rev_Script.js
-//
-// 最后更新时间: 2024-07-05 18:05
+// 最后更新时间: 2024-07-31 23:00
 
 // 规则集通用配置
 const ruleProviderCommon = {
@@ -22,15 +20,6 @@ const groupBaseOption = {
 
 // 程序入口
 function main(config) {
-  // const proxyCount = config?.proxies?.length ?? 0;
-  // const proxyProviderCount =
-  //   typeof config?.["proxy-providers"] === "object"
-  //     ? Object.keys(config["proxy-providers"]).length
-  //     : 0;
-  // if (proxyCount === 0 && proxyProviderCount === 0) {
-  //   throw new Error("配置文件中未找到任何代理");
-  // }
-
   const proxies = config?.proxies ?? [];
   const proxyProvider = config?.["proxy-providers"];
 
@@ -40,9 +29,6 @@ function main(config) {
   if (proxyCount === 0 && proxyProviderCount === 0) {
     throw new Error("配置文件中未找到任何代理");
   }
-  config = {};
-  config.proxies = proxies;
-  config["proxy-providers"] = proxyProvider;
 
   // 覆盖通用配置
   config["mixed-port"] = "7893";
@@ -180,8 +166,6 @@ function main(config) {
     enable: true,
     stack: "mixed",
     "dns-hijack": ["any:53"],
-    "auto-route": true,
-    "auto-detect-interface": true,
   };
 
   // 覆盖策略组
@@ -381,7 +365,7 @@ function main(config) {
       type: "url-test",
       tolerance: 0,
       "include-all": true,
-      filter: "(?i)🇭🇰|香港|HK|Hong|Hong",
+      filter: "(?i)🇭🇰|香港|HK|Hong",
       icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png",
     },
     {
@@ -424,17 +408,11 @@ function main(config) {
 
   // 覆盖规则集
   config["rule-providers"] = {
-    // AD: {
-    //   ...ruleProviderCommon,
-    //   behavior: "classical",
-    //   url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list",
-    //   path: "./rule-providers/AD.list",
-    // },
-    Lan: {
+    AD: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Lan.list",
-      path: "./rule-providers/Lan.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list",
+      path: "./rule-providers/AD.list",
     },
     Apple: {
       ...ruleProviderCommon,
@@ -442,29 +420,17 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list",
       path: "./rule-providers/Apple.list",
     },
-    Bing: {
+    Google: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/Bing/Bing.list",
-      path: "./rule-providers/Bing.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list",
+      path: "./rule-providers/Google.list",
     },
-    OneDrive: {
+    YouTube: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/OneDrive.list",
-      path: "./rule-providers/OneDrive.list",
-    },
-    Github: {
-      ...ruleProviderCommon,
-      behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list",
-      path: "./rule-providers/Github.list",
-    },
-    Microsoft: {
-      ...ruleProviderCommon,
-      behavior: "classical",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list",
-      path: "./rule-providers/Microsoft.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list",
+      path: "./rule-providers/YouTube.list",
     },
     Telegram: {
       ...ruleProviderCommon,
@@ -472,11 +438,11 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list",
       path: "./rule-providers/Telegram.list",
     },
-    Epic: {
+    Twitter: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list",
-      path: "./rule-providers/Epic.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list",
+      path: "./rule-providers/Twitter.list",
     },
     Steam: {
       ...ruleProviderCommon,
@@ -484,17 +450,23 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list",
       path: "./rule-providers/Steam.list",
     },
-    Twitter: {
+    Epic: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list",
-      path: "./rule-providers/Twitter.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list",
+      path: "./rule-providers/Epic.list",
     },
-    YouTube: {
+    AI: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list",
-      path: "./rule-providers/YouTube.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list",
+      path: "./rule-providers/AI.list",
+    },
+    Emby: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list",
+      path: "./rule-providers/Emby.list",
     },
     Spotify: {
       ...ruleProviderCommon,
@@ -532,17 +504,29 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/HBO.list",
       path: "./rule-providers/HBO.list",
     },
-    Google: {
+    Bing: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list",
-      path: "./rule-providers/Google.list",
+      url: "https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/Bing/Bing.list",
+      path: "./rule-providers/Bing.list",
     },
-    AI: {
+    OneDrive: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list",
-      path: "./rule-providers/AI.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/OneDrive.list",
+      path: "./rule-providers/OneDrive.list",
+    },
+    Github: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list",
+      path: "./rule-providers/Github.list",
+    },
+    Microsoft: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Microsoft.list",
+      path: "./rule-providers/Microsoft.list",
     },
     GitLab: {
       ...ruleProviderCommon,
@@ -550,17 +534,18 @@ function main(config) {
       url: "https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/GitLab/GitLab.list",
       path: "./rule-providers/GitLab.list",
     },
-    Emby: {
-      ...ruleProviderCommon,
-      behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list",
-      path: "./rule-providers/Emby.list",
-    },
     Manual: {
       ...ruleProviderCommon,
       behavior: "classical",
       url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Clash/Manual.list",
       path: "./rule-providers/Manual.list",
+    },
+
+    Lan: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Lan.list",
+      path: "./rule-providers/Lan.list",
     },
     ProxyGFW: {
       ...ruleProviderCommon,
@@ -568,11 +553,17 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/ProxyGFW.list",
       path: "./rule-providers/ProxyGFW.list",
     },
+    China: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/ChinaDomain.list",
+      path: "./rule-providers/China.list",
+    },
   };
 
   // 覆盖规则
   config["rules"] = [
-    // "RULE-SET,AD,广告拦截",
+    "RULE-SET,AD,广告拦截",
     "RULE-SET,AI,AI",
     "RULE-SET,Apple,苹果服务",
     "RULE-SET,YouTube,谷歌服务",
@@ -588,13 +579,12 @@ function main(config) {
     "RULE-SET,Disney,国际媒体",
     "RULE-SET,PrimeVideo,国际媒体",
     "RULE-SET,HBO,国际媒体",
-    "RULE-SET,GitLab,国外网站",
-    "RULE-SET,Github,国外网站",
-    "RULE-SET,Manual,国外网站",
     "GEOSITE,onedrive,微软服务",
+    "GEOSITE,github,微软服务",
     "GEOSITE,microsoft,微软服务",
+    "RULE-SET,GitLab,国外网站",
     "GEOSITE,gfw,国外网站",
-    "GEOSITE,cn,DIRECT",
+    "RULE-SET,China,DIRECT",
     "GEOIP,lan,DIRECT",
     "GEOIP,CN,DIRECT",
     "MATCH,兜底分流",
