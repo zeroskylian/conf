@@ -417,23 +417,41 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list",
       path: "./rule-providers/AD.list",
     },
+    Lan: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Lan.list",
+      path: "./rule-providers/Lan.list",
+    },
     Apple: {
       ...ruleProviderCommon,
       behavior: "classical",
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list",
       path: "./rule-providers/Apple.list",
     },
-    Google: {
+    Bing: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list",
-      path: "./rule-providers/Google.list",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml",
+      path: "./rule-providers/Bing.yaml",
     },
-    YouTube: {
+    OneDrive: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list",
-      path: "./rule-providers/YouTube.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/OneDrive.list",
+      path: "./rule-providers/OneDrive.list",
+    },
+    Github: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list",
+      path: "./rule-providers/Github.list",
+    },
+    Microsoft: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list",
+      path: "./rule-providers/Microsoft.list",
     },
     Telegram: {
       ...ruleProviderCommon,
@@ -441,11 +459,11 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list",
       path: "./rule-providers/Telegram.list",
     },
-    Twitter: {
+    Epic: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list",
-      path: "./rule-providers/Twitter.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list",
+      path: "./rule-providers/Epic.list",
     },
     Steam: {
       ...ruleProviderCommon,
@@ -453,23 +471,17 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list",
       path: "./rule-providers/Steam.list",
     },
-    Epic: {
+    Twitter: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list",
-      path: "./rule-providers/Epic.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list",
+      path: "./rule-providers/Twitter.list",
     },
-    AI: {
+    YouTube: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list",
-      path: "./rule-providers/AI.list",
-    },
-    Emby: {
-      ...ruleProviderCommon,
-      behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list",
-      path: "./rule-providers/Emby.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list",
+      path: "./rule-providers/YouTube.list",
     },
     Spotify: {
       ...ruleProviderCommon,
@@ -507,29 +519,29 @@ function main(config) {
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/HBO.list",
       path: "./rule-providers/HBO.list",
     },
-    OneDrive: {
+    Google: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/OneDrive.list",
-      path: "./rule-providers/OneDrive.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list",
+      path: "./rule-providers/Google.list",
     },
-    Github: {
+    AI: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list",
-      path: "./rule-providers/Github.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list",
+      path: "./rule-providers/AI.list",
     },
-    Microsoft: {
+    GitLab: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Microsoft.list",
-      path: "./rule-providers/Microsoft.list",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitLab/GitLab.yaml",
+      path: "./rule-providers/GitLab.yaml",
     },
-    Lan: {
+    Emby: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Lan.list",
-      path: "./rule-providers/Lan.list",
+      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list",
+      path: "./rule-providers/Emby.list",
     },
     ProxyGFW: {
       ...ruleProviderCommon,
@@ -558,7 +570,7 @@ function main(config) {
     "RULE-SET,PrimeVideo,国际媒体",
     "RULE-SET,HBO,国际媒体",
     "GEOSITE,onedrive,微软服务",
-    "GEOSITE,github,微软服务",
+    "GEOSITE,github,国外网站",
     "GEOSITE,microsoft,微软服务",
     "GEOSITE,gfw,国外网站",
     "GEOSITE,cn,DIRECT",
