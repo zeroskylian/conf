@@ -432,8 +432,8 @@ function main(config) {
     Bing: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml",
-      path: "./rule-providers/Bing.yaml",
+      url: "https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/Bing/Bing.list",
+      path: "./rule-providers/Bing.list",
     },
     OneDrive: {
       ...ruleProviderCommon,
@@ -534,14 +534,20 @@ function main(config) {
     GitLab: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitLab/GitLab.yaml",
-      path: "./rule-providers/GitLab.yaml",
+      url: "https://github.com/zeroskylian/ios_rule_script/raw/master/rule/Clash/GitLab/GitLab.list",
+      path: "./rule-providers/GitLab.list",
     },
     Emby: {
       ...ruleProviderCommon,
       behavior: "classical",
       url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list",
       path: "./rule-providers/Emby.list",
+    },
+    Manual: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Clash/Manual.list",
+      path: "./rule-providers/Manual.list",
     },
     ProxyGFW: {
       ...ruleProviderCommon,
@@ -569,8 +575,10 @@ function main(config) {
     "RULE-SET,Disney,国际媒体",
     "RULE-SET,PrimeVideo,国际媒体",
     "RULE-SET,HBO,国际媒体",
+    "RULE-SET,GitLab,国外网站",
+    "RULE-SET,Github,国外网站",
+    "RULE-SET,Manual,国外网站",
     "GEOSITE,onedrive,微软服务",
-    "GEOSITE,github,国外网站",
     "GEOSITE,microsoft,微软服务",
     "GEOSITE,gfw,国外网站",
     "GEOSITE,cn,DIRECT",
