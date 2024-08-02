@@ -424,12 +424,12 @@ function main(config) {
 
   // 覆盖规则集
   config["rule-providers"] = {
-    AD: {
-      ...ruleProviderCommon,
-      behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list",
-      path: "./rule-providers/AD.list",
-    },
+    // AD: {
+    //   ...ruleProviderCommon,
+    //   behavior: "classical",
+    //   url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list",
+    //   path: "./rule-providers/AD.list",
+    // },
     Lan: {
       ...ruleProviderCommon,
       behavior: "classical",
@@ -572,7 +572,7 @@ function main(config) {
 
   // 覆盖规则
   config["rules"] = [
-    "RULE-SET,AD,广告拦截",
+    // "RULE-SET,AD,广告拦截",
     "RULE-SET,AI,AI",
     "RULE-SET,Apple,苹果服务",
     "RULE-SET,YouTube,谷歌服务",
