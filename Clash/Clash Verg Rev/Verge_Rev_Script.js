@@ -408,11 +408,35 @@ function main(config) {
 
   // 覆盖规则集
   config["rule-providers"] = {
-    AD: {
+    reject_non_ip_no_drop: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list",
-      path: "./rule-providers/AD.list",
+      url: "https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt",
+      path: "./sukkaw_ruleset/reject_non_ip_no_drop.txt",
+    },
+    reject_non_ip_drop: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://ruleset.skk.moe/Clash/non_ip/reject-drop.txt",
+      path: "./sukkaw_ruleset/reject_non_ip_drop.txt",
+    },
+    reject_non_ip: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://ruleset.skk.moe/Clash/non_ip/reject.txt",
+      path: "./sukkaw_ruleset/reject_non_ip.txt",
+    },
+    reject_domainset: {
+      ...ruleProviderCommon,
+      behavior: "domain",
+      url: "https://ruleset.skk.moe/Clash/domainset/reject.txt",
+      path: "./sukkaw_ruleset/reject_domainset.txt",
+    },
+    reject_ip: {
+      ...ruleProviderCommon,
+      behavior: "classical",
+      url: "https://ruleset.skk.moe/Clash/ip/reject.txt",
+      path: "./sukkaw_ruleset/reject_ip.txt",
     },
     Apple: {
       ...ruleProviderCommon,
@@ -563,7 +587,11 @@ function main(config) {
 
   // 覆盖规则
   config["rules"] = [
-    "RULE-SET,AD,广告拦截",
+    "RULE-SET,reject_non_ip,广告拦截",
+    "RULE-SET,reject_domainset,广告拦截",
+    "RULE-SET,reject_ip,广告拦截",
+    "RULE-SET,reject_non_ip_drop,广告拦截",
+    "RULE-SET,reject_non_ip_no_drop,广告拦截",
     "RULE-SET,AI,AI",
     "RULE-SET,Apple,苹果服务",
     "RULE-SET,YouTube,谷歌服务",
