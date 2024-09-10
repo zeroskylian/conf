@@ -561,7 +561,7 @@ function main(config) {
     Manual: {
       ...ruleProviderCommon,
       behavior: "classical",
-      url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Clash/Manual.list",
+      url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list",
       path: "./rule-providers/Manual.list",
     },
 
