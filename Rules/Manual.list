@@ -1,16 +1,24 @@
 # NAME: Manual rules
+DOMAIN, 18akmanhua08.top
+DOMAIN, anime2.b-cdn.net
 DOMAIN, baozimh.com
+DOMAIN, embywiki.911997.xyz
 DOMAIN, iosb.lacst.cn
 DOMAIN, miaoshangmanhua.cc
+DOMAIN, nrs6ffl9w.com
 DOMAIN, old.ios.xicro.us.kg
 DOMAIN, qsm.life
 DOMAIN, shuyuan.yiove.com
+DOMAIN, sing-box.sagernet.org
 DOMAIN, tv.pilipili6.top
 DOMAIN, vomicmh.com
 DOMAIN, ww1.12345.al
 DOMAIN, www.ccsub.online
+DOMAIN, xsijishe.com
+DOMAIN, xsijishe.net
 
 DOMAIN-SUFFIX, 139mh.com
+DOMAIN,18akmanhua08.top
 DOMAIN-SUFFIX, aca.dog
 DOMAIN-SUFFIX, acaisbest.shop
 DOMAIN-SUFFIX, anti-ad.net
@@ -21,6 +29,7 @@ DOMAIN-SUFFIX, clickme.net
 DOMAIN-SUFFIX, cloudfront.net
 DOMAIN-SUFFIX, copymanga.tv
 DOMAIN-SUFFIX, cxm.us.kg
+DOMAIN-SUFFIX, fbsublink.com
 DOMAIN-SUFFIX, fbsublink.xyz
 DOMAIN-SUFFIX, feiniaoyun.life
 DOMAIN-SUFFIX, finderhub.app
@@ -30,6 +39,7 @@ DOMAIN-SUFFIX, fuliba.app
 DOMAIN-SUFFIX, fuliba2023.net
 DOMAIN-SUFFIX, haijbpi1.com
 DOMAIN-SUFFIX, haijiao.fun
+DOMAIN-SUFFIX, gitbook.io
 DOMAIN-SUFFIX, github.com
 DOMAIN-SUFFIX, github.io
 DOMAIN-SUFFIX, gopeed.com
@@ -42,10 +52,15 @@ DOMAIN-SUFFIX, link.i18n.studio
 DOMAIN-SUFFIX, linux.do
 DOMAIN-SUFFIX, lobehub.com
 DOMAIN-SUFFIX, macked.app
+DOMAIN-SUFFIX, missav.com
 DOMAIN-SUFFIX, my5353.com
+DOMAIN-SUFFIX, notion.so
+DOMAIN-SUFFIX, notion.site
 DOMAIN-SUFFIX, nsloon.app
 DOMAIN-SUFFIX, picacomic.com
 DOMAIN-SUFFIX, poecdn.net
+DOMAIN-SUFFIX, rule34.world
+DOMAIN-SUFFIX, rule34video.com
 DOMAIN-SUFFIX, sanheyiliao.xyz
 DOMAIN-SUFFIX, tanhuatv.site
 DOMAIN-SUFFIX, tgdriver.com
@@ -55,6 +70,8 @@ DOMAIN-SUFFIX, v2ex.com
 DOMAIN-SUFFIX, vamvideo.com
 DOMAIN-SUFFIX, videocelebs.net
 DOMAIN-SUFFIX, viglink.com
+DOMAIN-SUFFIX, white-plus.net
+DOMAIN-SUFFIX, wikipedia.org
 DOMAIN-SUFFIX, wnflb2023.com
 DOMAIN-SUFFIX, xcodereleases.com
 DOMAIN-SUFFIX, yemancomic.com
