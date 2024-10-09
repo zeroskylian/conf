@@ -1,8 +1,11 @@
 # NAME: Manual rules
 DOMAIN, 18akmanhua08.top
 DOMAIN, anime2.b-cdn.net
+DOMAIN, anime.girigirilove.com
 DOMAIN, baozimh.com
+DOMAIN, cdn-msp.jmcomic.me
 DOMAIN, embywiki.911997.xyz
+DOMAIN, git.886.be
 DOMAIN, iosb.lacst.cn
 DOMAIN, miaoshangmanhua.cc
 DOMAIN, nrs6ffl9w.com
@@ -19,16 +22,21 @@ DOMAIN, xsijishe.net
 
 DOMAIN-SUFFIX, 139mh.com
 DOMAIN-SUFFIX, 2djgame.net
+DOMAIN-SUFFIX, 4k-av.com
 DOMAIN-SUFFIX, aca.dog
+DOMAIN-SUFFIX, acaisbest.com
 DOMAIN-SUFFIX, acaisbest.shop
 DOMAIN-SUFFIX, anti-ad.net
 DOMAIN-SUFFIX, appds.vip
 DOMAIN-SUFFIX, appsumo.myklpages.com
+DOMAIN-SUFFIX, archive.org
 DOMAIN-SUFFIX, bangumi.tv
 DOMAIN-SUFFIX, clickme.net
 DOMAIN-SUFFIX, cloudfront.net
 DOMAIN-SUFFIX, copymanga.tv
 DOMAIN-SUFFIX, cxm.us.kg
+DOMAIN-SUFFIX, discourse.org
+DOMAIN-SUFFIX, discourse-cdn.com
 DOMAIN-SUFFIX, fbsublink.com
 DOMAIN-SUFFIX, fbsublink.xyz
 DOMAIN-SUFFIX, feiniaoyun.life
@@ -40,9 +48,11 @@ DOMAIN-SUFFIX, fuliba123.net
 DOMAIN-SUFFIX, fuliba2023.net
 DOMAIN-SUFFIX, haijbpi1.com
 DOMAIN-SUFFIX, haijiao.fun
+DOMAIN-SUFFIX, inoreader.com
 DOMAIN-SUFFIX, gitbook.io
 DOMAIN-SUFFIX, github.com
 DOMAIN-SUFFIX, github.io
+DOMAIN-SUFFIX, godaddy.com
 DOMAIN-SUFFIX, gopeed.com
 DOMAIN-SUFFIX, inputsource.pro
 DOMAIN-SUFFIX, jmapinodeudzn.xyz
@@ -55,11 +65,13 @@ DOMAIN-SUFFIX, lobehub.com
 DOMAIN-SUFFIX, macked.app
 DOMAIN-SUFFIX, missav.com
 DOMAIN-SUFFIX, my5353.com
+DOMAIN-SUFFIX, nhentai.net
 DOMAIN-SUFFIX, notion.so
 DOMAIN-SUFFIX, notion.site
 DOMAIN-SUFFIX, nsloon.app
 DOMAIN-SUFFIX, peachring.com
 DOMAIN-SUFFIX, picacomic.com
+DOMAIN-SUFFIX, pikachucloud.site
 DOMAIN-SUFFIX, poecdn.net
 DOMAIN-SUFFIX, rule34.world
 DOMAIN-SUFFIX, rule34video.com
@@ -80,3 +92,4 @@ DOMAIN-SUFFIX, wnflb2023.com
 DOMAIN-SUFFIX, xcodereleases.com
 DOMAIN-SUFFIX, yemancomic.com
 DOMAIN-SUFFIX, yinji.org
+DOMAIN-SUFFIX, yjys02.com
