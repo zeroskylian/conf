@@ -7,7 +7,7 @@
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2024-11-24 21:00
+# 最后更新时间: 2024-12-05
 #
 # ================
 
@@ -27,10 +27,15 @@ proxy-providers:
   Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
     url: http://your-service-provider
     <<: *p
-    #override: # 修改节点前后缀时，需移除前方的 "#" 符号
-    #additional-prefix: "节点前缀"
-    #additional-suffix: "节点后缀"
-  Subscribe2: { url: http://your-service-provider, <<: *p }
+    override: # 修改节点前后缀时，需移除前方的 "#" 符号
+      additional-prefix: "节点前缀"
+      additional-suffix: "节点后缀"
+  Subscribe2:
+    url: http://your-service-provider
+    <<: *p
+    override:
+      additional-prefix: "节点前缀"
+      #additional-suffix: "节点后缀"
   #Subscribe3: {url: http://your-service-provider, <<: *p}
   #Subscribe4: {url: http://your-service-provider, <<: *p}
 
@@ -366,6 +371,6 @@ rules:
   - GEOSITE,github,微软服务
   - GEOSITE,microsoft,微软服务
   - GEOSITE,gfw,国外网站
-  - GEOIP,lan,DIRECT
-  - GEOIP,CN,DIRECT
+  - GEOIP,private,DIRECT
+  - GEOIP,cn,DIRECT
   - MATCH,兜底分流
