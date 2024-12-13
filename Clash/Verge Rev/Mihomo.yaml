@@ -35,7 +35,7 @@ proxy-providers:
     <<: *p
     override:
       additional-prefix: "节点前缀"
-      #additional-suffix: "节点后缀"
+      additional-suffix: "节点后缀"
   #Subscribe3: {url: http://your-service-provider, <<: *p}
   #Subscribe4: {url: http://your-service-provider, <<: *p}
 
@@ -347,7 +347,7 @@ rule-providers:
     {
       <<: *c,
       path: ./rules/Manual.list,
-      url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.listntent.com/zeroskylian/ios_rule_script/master/rule/Clash/GitLab/GitLab.list,
+      url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list,
     }
 
 rules:
