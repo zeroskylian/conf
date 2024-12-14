@@ -1,5 +1,10 @@
+# picacomic
+DOMAIN-SUFFIX,manhuapica.com
+
 # jm comic
+DOMAIN,cdn-msp.jmcomic.me
 DOMAIN-SUFFIX,18comic.vip
+DOMAIN-SUFFIX,cdn-msp.jmcomic-zzz.one
 DOMAIN-SUFFIX,jmeadpoolcdn.one
 DOMAIN-SUFFIX,jmeadpoolcdn.life
 DOMAIN-SUFFIX,jmapiproxyxxx.one
@@ -7,6 +12,8 @@ DOMAIN-SUFFIX,jmfreedomproxy.xyz
 DOMAIN-SUFFIX,jmapiproxy1.cc
 DOMAIN-SUFFIX,jmapiproxy3.cc
 DOMAIN-SUFFIX,jmapiproxy4.cc
+DOMAIN-SUFFIX,jmapiproxy1.monster
+DOMAIN-SUFFIX,jmapinodeudzn.xyz
 
 # picacomic
 DOMAIN-SUFFIX,picacomic.com
@@ -15,4 +22,7 @@ DOMAIN-SUFFIX,picacomic.com
 DOMAIN-SUFFIX,e-hentai.org
 DOMAIN-SUFFIX,exhentai.org
 DOMAIN-SUFFIX,ehgt.org
+
+# nhentai
+DOMAIN-SUFFIX,nhentai.net
 
