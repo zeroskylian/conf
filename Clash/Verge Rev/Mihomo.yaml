@@ -7,7 +7,7 @@
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2024-12-05
+# 最后更新时间: 2024-12-11
 #
 # ================
 
@@ -24,10 +24,17 @@ p:
       },
   }
 proxy-providers:
-  Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+  # 注释
+  # Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+  #   url: http://your-service-provider
+  #   <<: *p
+  #   override: # 修改节点前后缀时，需移除前方的 "#" 符号
+  #     additional-prefix: "节点前缀"
+  #     additional-suffix: "节点后缀"
+  Subscribe:
     url: http://your-service-provider
     <<: *p
-    override: # 修改节点前后缀时，需移除前方的 "#" 符号
+    override:
       additional-prefix: "节点前缀"
       additional-suffix: "节点后缀"
   Subscribe2:
@@ -349,6 +356,12 @@ rule-providers:
       path: ./rules/Manual.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list,
     }
+  Comics:
+    {
+      <<: *c,
+      path: ./rules/Manual.list,
+      url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list,
+    }
 
 rules:
   # - RULE-SET,AD,REJECT
@@ -357,6 +370,7 @@ rules:
   - RULE-SET,YouTube,谷歌服务
   - RULE-SET,Google,谷歌服务
   - RULE-SET,Telegram,电报消息
+  # - PROCESS-NAME,Telegram,REJECT-DROP # For Telegram macOS
   - RULE-SET,Twitter,推特消息
   - RULE-SET,Steam,游戏平台
   - RULE-SET,Epic,游戏平台
@@ -367,6 +381,9 @@ rules:
   - RULE-SET,Disney,国际媒体
   - RULE-SET,PrimeVideo,国际媒体
   - RULE-SET,HBO,国际媒体
+  - RULE-SET,Bing,AI
+  - RULE-SET,Manual,国外网站
+  - RULE-SET,Comics,国外网站
   - GEOSITE,onedrive,微软服务
   - GEOSITE,github,微软服务
   - GEOSITE,microsoft,微软服务
