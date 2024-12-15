@@ -7,7 +7,7 @@
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2024-12-11
+# 最后更新时间: 2024-12-15
 #
 # ================
 
@@ -359,7 +359,7 @@ rule-providers:
   Comics:
     {
       <<: *c,
-      path: ./rules/Manual.list,
+      path: ./rules/Comics.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list,
     }
 
