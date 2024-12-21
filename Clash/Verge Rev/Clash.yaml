@@ -7,9 +7,73 @@
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2024-12-15
+# 最后更新时间: 2024-12-21
 #
 # ================
+
+mixed-port: 7893
+tcp-concurrent: true
+allow-lan: true
+ipv6: false
+mode: rule
+log-level: info
+udp: true
+unified-delay: true
+global-client-fingerprint: chrome
+find-process-mode: strict
+
+geodata-mode: false
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 24
+
+geox-url:
+  # geoip: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
+  # geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://geodata.kelee.one/Country-Masaiki.mmdb"
+  asn: "https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack: [any:53]
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  listen: :1053
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    [
+      "*",
+      "+.lan",
+      "+.local",
+      "+.direct",
+      "+.msftconnecttest.com",
+      "+.msftncsi.com",
+    ]
+  nameserver: [223.5.5.5, 119.29.29.29]
+  nameserver-policy: { "rule-set:AD": rcode://success }
 
 NodeParam:
   &NodeParam {
@@ -45,60 +109,6 @@ proxy-providers:
       additional-suffix: "节点后缀"
   #Subscribe3: {url: http://your-service-provider, <<: *NodeParam}
   #Subscribe4: {url: http://your-service-provider, <<: *NodeParam}
-mixed-port: 7893
-tcp-concurrent: true
-allow-lan: true
-ipv6: false
-mode: rule
-log-level: info
-unified-delay: true
-global-client-fingerprint: chrome
-find-process-mode: strict
-
-geodata-mode: true
-geox-url:
-  # geoip: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
-  # geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-  mmdb: "https://geodata.kelee.one/Country-Masaiki.mmdb"
-  asn: "https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb"
-
-profile:
-  store-selected: true
-  store-fake-ip: true
-
-sniffer:
-  enable: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-
-tun:
-  enable: true
-  stack: mixed
-  dns-hijack: [any:53]
-
-dns:
-  enable: true
-  ipv6: false
-  enhanced-mode: fake-ip
-  listen: :1053
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    [
-      "*",
-      "+.lan",
-      "+.local",
-      "+.direct",
-      "+.msftconnecttest.com",
-      "+.msftncsi.com",
-    ]
-  nameserver: [223.5.5.5, 119.29.29.29]
-  nameserver-policy: { "rule-set:AD": rcode://success }
 
 # 锚点 - 节点筛选组
 FilterHK: &FilterHK '^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
