@@ -1,0 +1,395 @@
+# Author:https://github.com/Repcz
+# TG:https://t.me/QVQ_Channel
+# 原地址: https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
+# 官方文档：https://wiki.metacubex.one/
+#
+# 以 '#' 或 '//' 开头的配置文件行为注释行
+#
+# Mihomo Version ≥ 1.8.10
+#
+# 最后更新时间: 2024-12-15
+#
+# ================
+
+NodeParam:
+  &NodeParam {
+    type: http,
+    interval: 86400,
+    health-check:
+      {
+        enable: true,
+        url: http://1.1.1.1/generate_204,
+        interval: 1800,
+        timeout: 5000,
+      },
+  }
+proxy-providers:
+  # 注释
+  # Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
+  #   url: http://your-service-provider
+  #   <<: *NodeParam
+  #   override: # 修改节点前后缀时，需移除前方的 "#" 符号
+  #     additional-prefix: "节点前缀"
+  #     additional-suffix: "节点后缀"
+  Subscribe:
+    url: http://your-service-provider
+    <<: *NodeParam
+    override:
+      additional-prefix: "节点前缀"
+      additional-suffix: "节点后缀"
+  Subscribe2:
+    url: http://your-service-provider
+    <<: *NodeParam
+    override:
+      additional-prefix: "节点前缀"
+      additional-suffix: "节点后缀"
+  #Subscribe3: {url: http://your-service-provider, <<: *NodeParam}
+  #Subscribe4: {url: http://your-service-provider, <<: *NodeParam}
+mixed-port: 7893
+tcp-concurrent: true
+allow-lan: true
+ipv6: false
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+find-process-mode: strict
+
+geodata-mode: true
+geox-url:
+  # geoip: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
+  # geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://geodata.kelee.one/Country-Masaiki.mmdb"
+  asn: "https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack: [any:53]
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  listen: :1053
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    [
+      "*",
+      "+.lan",
+      "+.local",
+      "+.direct",
+      "+.msftconnecttest.com",
+      "+.msftncsi.com",
+    ]
+  nameserver: [223.5.5.5, 119.29.29.29]
+  nameserver-policy: { "rule-set:AD": rcode://success }
+
+# 锚点参数
+AllGroup:
+  &AllGroup {
+    type: select,
+    proxies:
+      [手动切换, 香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, DIRECT],
+  }
+url-test:
+  &url-test {
+    type: url-test,
+    url: http://1.1.1.1/generate_204,
+    interval: 300,
+    tolerance: 0,
+    include-all: true,
+  }
+select: &select { type: select, include-all: true }
+fallback:
+  &fallback {
+    type: fallback,
+    url: http://1.1.1.1/generate_204,
+    interval: 300,
+    include-all: true,
+  }
+load-balance:
+  &load-balance {
+    type: load-balance,
+    strategy: consistent-hashing,
+    url: http://1.1.1.1/generate_204,
+    interval: 300,
+    include-all: true,
+  }
+RuleProviders:
+  &RuleProviders {
+    type: http,
+    behavior: classical,
+    format: text,
+    interval: 86400,
+  }
+
+proxy-groups:
+  - {
+      name: 手动切换,
+      type: select,
+      include-all: true,
+      proxies: [香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, DIRECT],
+      icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/applesafari.png,
+    }
+  - {
+      name: 国外网站,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png,
+    }
+  - {
+      name: 国际媒体,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png,
+    }
+  - {
+      name: 苹果服务,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png,
+    }
+  - {
+      name: 微软服务,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png,
+    }
+  - {
+      name: 谷歌服务,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png,
+    }
+  - {
+      name: 电报消息,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png,
+    }
+  - {
+      name: 推特消息,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png,
+    }
+  - {
+      name: AI,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png,
+    }
+  - {
+      name: 游戏平台,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png,
+    }
+  - {
+      name: Emby,
+      <<: *AllGroup,
+      include-all: true,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png,
+    }
+  - {
+      name: Spotify,
+      <<: *AllGroup,
+      include-all: true,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png,
+    }
+  - {
+      name: 兜底分流,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png,
+    }
+  - {
+      name: 香港节点,
+      <<: *url-test,
+      filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)",
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png,
+    }
+  - {
+      name: 美国节点,
+      <<: *url-test,
+      filter: "(?i)🇺🇸|美国|洛杉矶|圣何塞|(\b(US|United States)\b)",
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png,
+    }
+  - {
+      name: 狮城节点,
+      <<: *url-test,
+      filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)",
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png,
+    }
+  - {
+      name: 日本节点,
+      <<: *url-test,
+      filter: "(?i)🇯🇵|日本|东京|(\b(JP|Japan)\b)",
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png,
+    }
+  - {
+      name: 台湾节点,
+      <<: *url-test,
+      filter: "(?i)🇨🇳|🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)",
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png,
+    }
+
+rule-providers:
+  AD:
+    {
+      <<: *RuleProviders,
+      path: ./rules/AD.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list,
+    }
+  Apple:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Apple.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list,
+    }
+  YouTube:
+    {
+      <<: *RuleProviders,
+      path: ./rules/YouTube.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list,
+    }
+  Google:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Google.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list,
+    }
+  Telegram:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Telegram.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list,
+    }
+  Twitter:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Twitter.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list,
+    }
+  Steam:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Steam.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list,
+    }
+  Epic:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Epic.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list,
+    }
+  AI:
+    {
+      <<: *RuleProviders,
+      path: ./rules/AI.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list,
+    }
+  Emby:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Emby.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list,
+    }
+  Spotify:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Spotify.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Spotify.list,
+    }
+  Bahamut:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Bahamut.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Bahamut.list,
+    }
+  Netflix:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Netflix.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Netflix.list,
+    }
+  Disney:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Disney.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Disney.list,
+    }
+  PrimeVideo:
+    {
+      <<: *RuleProviders,
+      path: ./rules/PrimeVideo.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/PrimeVideo.list,
+    }
+  HBO:
+    {
+      <<: *RuleProviders,
+      path: ./rules/HBO.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/HBO.list,
+    }
+  Bing:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Bing.list,
+      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/Bing/Bing.list,
+    }
+  Github:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Github.list,
+      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list,
+    }
+  GitLab:
+    {
+      <<: *RuleProviders,
+      path: ./rules/GitLab.list,
+      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/GitLab/GitLab.list,
+    }
+  Manual:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Manual.list,
+      url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list,
+    }
+  Comics:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Comics.list,
+      url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list,
+    }
+
+rules:
+  # - RULE-SET,AD,REJECT
+  - RULE-SET, LAN, DIRECT
+  - RULE-SET, Direct, DIRECT
+  - RULE-SET,AI,AI
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,YouTube,谷歌服务
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,Telegram,电报消息
+  # - PROCESS-NAME,Telegram,REJECT-DROP # For Telegram macOS
+  - RULE-SET,Twitter,推特消息
+  - RULE-SET,Steam,游戏平台
+  - RULE-SET,Epic,游戏平台
+  - RULE-SET,Emby,Emby
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Bahamut,国际媒体
+  - RULE-SET,Netflix,国际媒体
+  - RULE-SET,Disney,国际媒体
+  - RULE-SET,PrimeVideo,国际媒体
+  - RULE-SET,HBO,国际媒体
+  - RULE-SET,Bing,AI
+  - RULE-SET,Manual,国外网站
+  - RULE-SET,Comics,国外网站
+  - GEOIP,CN,DIRECT
+  - MATCH,兜底策略
