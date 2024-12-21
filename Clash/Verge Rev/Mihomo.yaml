@@ -131,7 +131,13 @@ load-balance:
     interval: 300,
     include-all: true,
   }
-c: &c { type: http, behavior: classical, format: text, interval: 86400 }
+RuleProviders:
+  &RuleProviders {
+    type: http,
+    behavior: classical,
+    format: text,
+    interval: 86400,
+  }
 
 proxy-groups:
   - {
@@ -237,127 +243,127 @@ proxy-groups:
 rule-providers:
   AD:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/AD.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list,
     }
   Apple:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Apple.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list,
     }
   YouTube:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/YouTube.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list,
     }
   Google:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Google.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list,
     }
   Telegram:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Telegram.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list,
     }
   Twitter:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Twitter.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list,
     }
   Steam:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Steam.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list,
     }
   Epic:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Epic.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list,
     }
   AI:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/AI.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list,
     }
   Emby:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Emby.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list,
     }
   Spotify:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Spotify.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Spotify.list,
     }
   Bahamut:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Bahamut.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Bahamut.list,
     }
   Netflix:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Netflix.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Netflix.list,
     }
   Disney:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Disney.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Disney.list,
     }
   PrimeVideo:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/PrimeVideo.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/PrimeVideo.list,
     }
   HBO:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/HBO.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/HBO.list,
     }
   Bing:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Bing.list,
       url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/Bing/Bing.list,
     }
   Github:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Github.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list,
     }
   GitLab:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/GitLab.list,
       url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/GitLab/GitLab.list,
     }
   Manual:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Manual.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list,
     }
   Comics:
     {
-      <<: *c,
+      <<: *RuleProviders,
       path: ./rules/Comics.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list,
     }
