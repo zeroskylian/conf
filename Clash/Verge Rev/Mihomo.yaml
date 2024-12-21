@@ -11,8 +11,8 @@
 #
 # ================
 
-p:
-  &p {
+NodeParam:
+  &NodeParam {
     type: http,
     interval: 86400,
     health-check:
@@ -27,25 +27,24 @@ proxy-providers:
   # 注释
   # Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
   #   url: http://your-service-provider
-  #   <<: *p
+  #   <<: *NodeParam
   #   override: # 修改节点前后缀时，需移除前方的 "#" 符号
   #     additional-prefix: "节点前缀"
   #     additional-suffix: "节点后缀"
   Subscribe:
     url: http://your-service-provider
-    <<: *p
+    <<: *NodeParam
     override:
       additional-prefix: "节点前缀"
       additional-suffix: "节点后缀"
   Subscribe2:
     url: http://your-service-provider
-    <<: *p
+    <<: *NodeParam
     override:
       additional-prefix: "节点前缀"
       additional-suffix: "节点后缀"
-  #Subscribe3: {url: http://your-service-provider, <<: *p}
-  #Subscribe4: {url: http://your-service-provider, <<: *p}
-
+  #Subscribe3: {url: http://your-service-provider, <<: *NodeParam}
+  #Subscribe4: {url: http://your-service-provider, <<: *NodeParam}
 mixed-port: 7893
 tcp-concurrent: true
 allow-lan: true
