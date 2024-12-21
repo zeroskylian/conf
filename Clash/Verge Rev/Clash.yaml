@@ -100,6 +100,16 @@ dns:
   nameserver: [223.5.5.5, 119.29.29.29]
   nameserver-policy: { "rule-set:AD": rcode://success }
 
+# 锚点 - 节点筛选组
+FilterHK: &FilterHK '^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterTW: &FilterTW '^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterJP: &FilterJP '^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterKR: &FilterKR '^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterSG: &FilterSG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States|USA)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterGame: &FilterGame '^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$'
+FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
+
 # 锚点参数
 AllGroup:
   &AllGroup {
@@ -107,29 +117,31 @@ AllGroup:
     proxies:
       [手动切换, 香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, DIRECT],
   }
-url-test:
-  &url-test {
+UrlTest:
+  &UrlTest {
     type: url-test,
-    url: http://1.1.1.1/generate_204,
-    interval: 300,
-    tolerance: 0,
-    include-all: true,
+    interval: 6,
+    tolerance: 20,
+    lazy: true,
+    url: "http://www.google.com/blank.html",
+    disable-udp: false,
+    timeout: 2000,
+    max-failed-times: 3,
+    hidden: true,
+    include-all-providers: true,
   }
 select: &select { type: select, include-all: true }
-fallback:
-  &fallback {
+FallBack:
+  &FallBack {
     type: fallback,
-    url: http://1.1.1.1/generate_204,
-    interval: 300,
-    include-all: true,
-  }
-load-balance:
-  &load-balance {
-    type: load-balance,
-    strategy: consistent-hashing,
-    url: http://1.1.1.1/generate_204,
-    interval: 300,
-    include-all: true,
+    interval: 6,
+    lazy: true,
+    url: "http://www.google.com/blank.html",
+    disable-udp: false,
+    timeout: 2000,
+    max-failed-times: 3,
+    hidden: true,
+    include-all-providers: true,
   }
 RuleProviders:
   &RuleProviders {
@@ -211,36 +223,63 @@ proxy-groups:
     }
   - {
       name: 香港节点,
-      <<: *url-test,
-      filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)",
+      proxies: [香港手动选择, ⏱香港时延优选, 🚥香港故障转移],
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png,
     }
   - {
       name: 美国节点,
-      <<: *url-test,
-      filter: "(?i)🇺🇸|美国|洛杉矶|圣何塞|(\b(US|United States)\b)",
+      proxies: [美国手动选择, ⏱美国时延优选, 🚥美国故障转移],
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png,
     }
   - {
       name: 狮城节点,
-      <<: *url-test,
-      filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)",
+      proxies: [狮城手动选择, ⏱狮城时延优选, 🚥狮城故障转移],
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png,
     }
   - {
       name: 日本节点,
-      <<: *url-test,
-      filter: "(?i)🇯🇵|日本|东京|(\b(JP|Japan)\b)",
+      proxies: [日本手动选择, ⏱日本时延优选, 🚥日本故障转移],
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png,
     }
   - {
       name: 台湾节点,
-      <<: *url-test,
-      filter: "(?i)🇨🇳|🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)",
+      proxies: [台湾手动选择, ⏱台湾时延优选, 🚥台湾故障转移],
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png,
     }
-
+  - { name: 香港手动选择, <<: *select, filter: *FilterHK }
+  - { name: 美国手动选择, <<: *select, filter: *FilterUS }
+  - { name: 狮城手动选择, <<: *select, filter: *FilterSG }
+  - { name: 日本手动选择, <<: *select, filter: *FilterJP }
+  - { name: 台湾手动选择, <<: *select, filter: *FilterTW }
+  - { name: ⏱香港时延优选, <<: *UrlTest, filter: *FilterHK }
+  - { name: ⏱美国时延优选, <<: *UrlTest, filter: *FilterUS }
+  - { name: ⏱狮城时延优选, <<: *UrlTest, filter: *FilterSG }
+  - { name: ⏱日本时延优选, <<: *UrlTest, filter: *FilterJP }
+  - { name: ⏱台湾时延优选, <<: *UrlTest, filter: *FilterTW }
+  - { name: 🚥香港故障转移, <<: *FallBack, filter: *FilterHK }
+  - { name: 🚥美国故障转移, <<: *FallBack, filter: *FilterUS }
+  - { name: 🚥狮城故障转移, <<: *FallBack, filter: *FilterSG }
+  - { name: 🚥日本故障转移, <<: *FallBack, filter: *FilterJP }
+  - { name: 🚥台湾故障转移, <<: *FallBack, filter: *FilterTW }
 rule-providers:
+  LAN:
+    {
+      <<: *RuleProviders,
+      path: "./rules/Lan.yaml",
+      url: "https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml",
+    }
+  Direct:
+    {
+      <<: *RuleProviders,
+      path: "./rules/Direct.yaml",
+      url: "https://kelee.one/Tool/Clash/Rule/Direct.yaml",
+    }
+  Proxy:
+    {
+      <<: *RuleProviders,
+      path: "./rules/Proxy.yaml",
+      url: "https://kelee.one/Tool/Clash/Rule/Proxy.yaml",
+    }
   AD:
     {
       <<: *RuleProviders,
@@ -372,6 +411,7 @@ rules:
   # - RULE-SET,AD,REJECT
   - RULE-SET, LAN, DIRECT
   - RULE-SET, Direct, DIRECT
+  - RULE-SET, Proxy, 兜底分流
   - RULE-SET,AI,AI
   - RULE-SET,Apple,苹果服务
   - RULE-SET,YouTube,谷歌服务
