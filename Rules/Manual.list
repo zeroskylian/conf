@@ -46,6 +46,7 @@ DOMAIN-SUFFIX,ccsub.org
 DOMAIN-SUFFIX,charliemonroe.net
 DOMAIN-SUFFIX,clickme.net
 DOMAIN-SUFFIX,cloudfront.net
+DOMAIN-SUFFIX,cdn.uaa010.com
 DOMAIN-SUFFIX,copymanga.tv
 DOMAIN-SUFFIX,cordc.xyz
 DOMAIN-SUFFIX,cxm.us.kg
@@ -55,6 +56,7 @@ DOMAIN-SUFFIX,downiestatistics.com
 DOMAIN-SUFFIX,easyfastcloud.com
 DOMAIN-SUFFIX,efcloud3.cc
 DOMAIN-SUFFIX,expo.dev
+DOMAIN-SUFFIX,facal.one
 DOMAIN-SUFFIX,f-droid.org
 DOMAIN-SUFFIX,fbsublink.com
 DOMAIN-SUFFIX,fbsublink.xyz
@@ -112,7 +114,7 @@ DOMAIN-SUFFIX,peachring.com
 DOMAIN-SUFFIX,pikachucloud.site
 DOMAIN-SUFFIX,poecdn.net
 DOMAIN-SUFFIX,pronotes.app
-DOMAIN-SUFFIX,pstmn.io
+# DOMAIN-SUFFIX,pstmn.io
 DOMAIN-SUFFIX,revenuecat.com
 DOMAIN-SUFFIX,rule34.world
 DOMAIN-SUFFIX,rule34video.com
@@ -130,6 +132,7 @@ DOMAIN-SUFFIX,tgdriver.com
 DOMAIN-SUFFIX,torproject.org
 DOMAIN-SUFFIX,upstash.com
 DOMAIN-SUFFIX,upstash.io
+DOMAIN-SUFFIX,uaa.com
 DOMAIN-SUFFIX,v2ex.com
 DOMAIN-SUFFIX,vamvideo.com
 DOMAIN-SUFFIX,videocelebs.net
