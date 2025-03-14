@@ -7,7 +7,11 @@ DOMAIN,cdn-msp.jmcomic.me
 DOMAIN-SUFFIX,18comic.vip
 DOMAIN-SUFFIX,cdn-msp.jmcomic-zzz.one
 DOMAIN-SUFFIX,jmapiproxy1.cc
+DOMAIN-SUFFIX,cdnmhws.cc
+DOMAIN-SUFFIX,cdnmhwscc.org
 
+
+DOMAIN-SUFFIX,cdnblackmyth.club
 DOMAIN-SUFFIX,cdnblackmyth.xyz
 DOMAIN-SUFFIX,cdnxxx-proxy.co
 DOMAIN-SUFFIX,cdn-msp.jmapiproxy3.cc
@@ -27,6 +31,7 @@ DOMAIN-SUFFIX,jmapiproxy3.cc
 DOMAIN-SUFFIX,jmapiproxy4.cc
 DOMAIN-SUFFIX,jmapiproxy1.monster
 DOMAIN-SUFFIX,jmapinodeudzn.xyz
+DOMAIN-SUFFIX,jmapinodeudzn.net
 
 # picacomic
 DOMAIN-SUFFIX,picacomic.com
@@ -42,8 +47,11 @@ DOMAIN-SUFFIX,nhentai.net
 
 DOMAIN-SUFFIX,freexcomic.com
 DOMAIN,52jmd.com
+DOMAIN-SUFFIX,ikmmh.com
 DOMAIN-SUFFIX,jmanga.ac
+DOMAIN-SUFFIX,komiic.com
 DOMAIN-SUFFIX,manwasw.cc
 DOMAIN-SUFFIX,yydsmh.com
 DOMAIN-SUFFIX,baozimh.com
 DOMAIN-SUFFIX,mangacopy.com
+DOMAIN-SUFFIX,wnacg.com
