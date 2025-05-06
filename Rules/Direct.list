@@ -1,3 +1,6 @@
 DOMAIN-SUFFIX,aihubmix.com
+DOMAIN-SUFFIX,ibm.com
+DOMAIN-SUFFIX,plex.tv
 DOMAIN-SUFFIX,staticfile.org
+DOMAIN-SUFFIX,steamserver.net # 用于判断用户所在地区分配下载CDN的地址
 DOMAIN-SUFFIX,yiruan.info
