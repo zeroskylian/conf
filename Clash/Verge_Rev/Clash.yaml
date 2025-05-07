@@ -278,20 +278,14 @@ rule-providers:
   LAN:
     {
       <<: *RuleProviders,
-      path: "./rules/Lan.yaml",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml",
+      path: "./rules/Lan.list",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Lan/Lan.list",
     }
   Direct:
     {
       <<: *RuleProviders,
       path: "./rules/Direct.yaml",
       url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list",
-    }
-  Proxy:
-    {
-      <<: *RuleProviders,
-      path: "./rules/Proxy.yaml",
-      url: "https://kelee.one/Tool/Clash/Rule/Proxy.yaml",
     }
   AD:
     {
@@ -393,7 +387,7 @@ rule-providers:
     {
       <<: *RuleProviders,
       path: ./rules/Tiktok.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list,
+      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/TikTok/TikTok.list,
     }
   Bing:
     {
@@ -429,7 +423,6 @@ rule-providers:
 rules:
   - RULE-SET,LAN, DIRECT
   - RULE-SET,Direct, DIRECT
-  - RULE-SET,Proxy, 兜底分流
   - RULE-SET,AI,AI
   - RULE-SET,Apple,苹果服务
   - RULE-SET,YouTube,谷歌服务
@@ -449,6 +442,5 @@ rules:
   - RULE-SET,Bing,AI
   - RULE-SET,Manual,国外网站
   - RULE-SET,Comics,国外网站
-  - DOMAIN-SUFFIX,ccsub.online,国外网站
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
