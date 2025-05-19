@@ -1,0 +1,9 @@
+#!name=书旗小说去广告-z
+#!desc=书旗小说去广告在 LoonKissSurge 下去除不全,补充下
+
+[URL Rewrite]
+
+^https:\/\/ocean\.shuqireader\.com\/api\/ad\/adserver\/v1\/api\/getAdInfo - reject
+
+^https:\/\/ocean\.shuqireader\.com\/api\/ad\/adserver\/v1\/api\/ad\/userInfo - reject
+
