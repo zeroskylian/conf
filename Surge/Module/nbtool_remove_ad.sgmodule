@@ -1,0 +1,10 @@
+#!name=NBToolRemoveAD
+#!desc==NBTool remove ad
+
+[Rule]
+DOMAIN,api-dsp.8ziben.com,REJECT
+DOMAIN,sdk.zhangyuyidong.cn,REJECT
+DOMAIN,open.e.kuaishou.cn,REJECT
+DOMAIN,v66-ad.ndcjl.com,REJECT
+DOMAIN,api-events.8ziben.com,REJECT
+DOMAIN-SUFFIX,adkwai.com,REJECT
