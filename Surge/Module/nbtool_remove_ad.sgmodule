@@ -1,5 +1,5 @@
 #!name=NBToolRemoveAD
-#!desc==NBTool remove ad
+#!desc=NBTool remove ad
 
 [Rule]
 DOMAIN,api-dsp.8ziben.com,REJECT
