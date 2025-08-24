@@ -1,14 +1,13 @@
 # Author:https://github.com/Repcz
 # TG:https://t.me/QVQ_Channel
 # 原地址: https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
-# 原地址: https://raw.githubusercontent.com/luestr/ProxyResource/refs/heads/main/Tool/Clash/Config/Clash_Sample_Configuration_By_iKeLee.yaml
 # 官方文档：https://wiki.metacubex.one/
 #
 # 以 '#' 或 '//' 开头的配置文件行为注释行
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2024-12-21
+# 最后更新时间: 2025-08-24
 #
 # ================
 
@@ -71,7 +70,7 @@ dns:
       "+.msftconnecttest.com",
       "+.msftncsi.com",
     ]
-  nameserver: [223.5.5.5, 119.29.29.29]
+  nameserver: [8.8.8.8, 223.5.5.5, 119.29.29.29]
   nameserver-policy: { "rule-set:AD": rcode://success }
 
 NodeParam:
@@ -117,14 +116,24 @@ FilterKR: &FilterKR '^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)(\d+)?\b
 FilterSG: &FilterSG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
 FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States|USA)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
 FilterGame: &FilterGame '^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$'
-FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
+FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|卡顿|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
 
 # 锚点参数
 AllGroup:
   &AllGroup {
     type: select,
     proxies:
-      [手动切换, 香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, DIRECT],
+      [
+        手动切换,
+        香港节点,
+        美国节点,
+        狮城节点,
+        日本节点,
+        台湾节点,
+        韩国节点,
+        手动节点,
+        DIRECT,
+      ],
   }
 UrlTest:
   &UrlTest {
@@ -161,12 +170,84 @@ RuleProviders:
   }
 
 proxy-groups:
+  - { name: 香港手动选择, <<: *Select, filter: *FilterHK }
+  - { name: 美国手动选择, <<: *Select, filter: *FilterUS }
+  - { name: 狮城手动选择, <<: *Select, filter: *FilterSG }
+  - { name: 日本手动选择, <<: *Select, filter: *FilterJP }
+  - { name: 台湾手动选择, <<: *Select, filter: *FilterTW }
+  - { name: 韩国手动选择, <<: *Select, filter: *FilterKR }
+  - { name: ⏱香港时延优选, <<: *UrlTest, filter: *FilterHK }
+  - { name: ⏱美国时延优选, <<: *UrlTest, filter: *FilterUS }
+  - { name: ⏱狮城时延优选, <<: *UrlTest, filter: *FilterSG }
+  - { name: ⏱日本时延优选, <<: *UrlTest, filter: *FilterJP }
+  - { name: ⏱台湾时延优选, <<: *UrlTest, filter: *FilterTW }
+  - { name: ⏱韩国时延优选, <<: *Select, filter: *FilterKR }
+  - { name: 🚥香港故障转移, <<: *FallBack, filter: *FilterHK }
+  - { name: 🚥美国故障转移, <<: *FallBack, filter: *FilterUS }
+  - { name: 🚥狮城故障转移, <<: *FallBack, filter: *FilterSG }
+  - { name: 🚥日本故障转移, <<: *FallBack, filter: *FilterJP }
+  - { name: 🚥台湾故障转移, <<: *FallBack, filter: *FilterTW }
+  - { name: 🚥韩国故障转移, <<: *FallBack, filter: *FilterKR }
   - {
       name: 手动切换,
       type: select,
       include-all: true,
-      proxies: [香港节点, 美国节点, 狮城节点, 日本节点, 台湾节点, DIRECT],
+      filter: *FilterAll,
+      proxies:
+        [
+          香港节点,
+          美国节点,
+          狮城节点,
+          日本节点,
+          台湾节点,
+          韩国节点,
+          手动节点,
+          DIRECT,
+        ],
       icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/applesafari.png,
+    }
+  - {
+      name: 香港节点,
+      type: select,
+      proxies: [香港手动选择, ⏱香港时延优选, 🚥香港故障转移],
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png,
+    }
+  - {
+      name: 美国节点,
+      type: select,
+      proxies: [美国手动选择, ⏱美国时延优选, 🚥美国故障转移],
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png,
+    }
+  - {
+      name: 狮城节点,
+      type: select,
+      proxies: [狮城手动选择, ⏱狮城时延优选, 🚥狮城故障转移],
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png,
+    }
+  - {
+      name: 日本节点,
+      type: select,
+      proxies: [日本手动选择, ⏱日本时延优选, 🚥日本故障转移],
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png,
+    }
+  - {
+      name: 台湾节点,
+      type: select,
+      proxies: [台湾手动选择, ⏱台湾时延优选, 🚥台湾故障转移],
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png,
+    }
+  - {
+      name: 韩国节点,
+      type: select,
+      proxies: [韩国手动选择, ⏱韩国时延优选, 🚥韩国故障转移],
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png,
+    }
+  - {
+      name: 手动节点,
+      type: select,
+      <<: *Select,
+      filter: *FilterAll,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png,
     }
   - {
       name: 国外网站,
@@ -216,7 +297,6 @@ proxy-groups:
   - {
       name: Emby,
       <<: *AllGroup,
-      include-all: true,
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png,
     }
   - {
@@ -225,55 +305,21 @@ proxy-groups:
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png,
     }
   - {
+      name: Comic,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Clubhouse.png,
+    }
+  - {
+      name: Pikpak,
+      <<: *AllGroup,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png,
+    }
+  - {
       name: 兜底分流,
       <<: *AllGroup,
       icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png,
     }
-  - {
-      name: 香港节点,
-      type: select,
-      proxies: [香港手动选择, ⏱香港时延优选, 🚥香港故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png,
-    }
-  - {
-      name: 美国节点,
-      type: select,
-      proxies: [美国手动选择, ⏱美国时延优选, 🚥美国故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png,
-    }
-  - {
-      name: 狮城节点,
-      type: select,
-      proxies: [狮城手动选择, ⏱狮城时延优选, 🚥狮城故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png,
-    }
-  - {
-      name: 日本节点,
-      type: select,
-      proxies: [日本手动选择, ⏱日本时延优选, 🚥日本故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png,
-    }
-  - {
-      name: 台湾节点,
-      type: select,
-      proxies: [台湾手动选择, ⏱台湾时延优选, 🚥台湾故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png,
-    }
-  - { name: 香港手动选择, <<: *Select, filter: *FilterHK }
-  - { name: 美国手动选择, <<: *Select, filter: *FilterUS }
-  - { name: 狮城手动选择, <<: *Select, filter: *FilterSG }
-  - { name: 日本手动选择, <<: *Select, filter: *FilterJP }
-  - { name: 台湾手动选择, <<: *Select, filter: *FilterTW }
-  - { name: ⏱香港时延优选, <<: *UrlTest, filter: *FilterHK }
-  - { name: ⏱美国时延优选, <<: *UrlTest, filter: *FilterUS }
-  - { name: ⏱狮城时延优选, <<: *UrlTest, filter: *FilterSG }
-  - { name: ⏱日本时延优选, <<: *UrlTest, filter: *FilterJP }
-  - { name: ⏱台湾时延优选, <<: *UrlTest, filter: *FilterTW }
-  - { name: 🚥香港故障转移, <<: *FallBack, filter: *FilterHK }
-  - { name: 🚥美国故障转移, <<: *FallBack, filter: *FilterUS }
-  - { name: 🚥狮城故障转移, <<: *FallBack, filter: *FilterSG }
-  - { name: 🚥日本故障转移, <<: *FallBack, filter: *FilterJP }
-  - { name: 🚥台湾故障转移, <<: *FallBack, filter: *FilterTW }
+
 rule-providers:
   LAN:
     {
@@ -284,8 +330,14 @@ rule-providers:
   Direct:
     {
       <<: *RuleProviders,
-      path: "./rules/Direct.yaml",
+      path: "./rules/Direct.list",
       url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list",
+    }
+  Proxy:
+    {
+      <<: *RuleProviders,
+      path: "./rules/Proxy.yaml",
+      url: "https://kelee.one/Tool/Clash/Rule/Proxy.yaml",
     }
   AD:
     {
@@ -387,7 +439,7 @@ rule-providers:
     {
       <<: *RuleProviders,
       path: ./rules/Tiktok.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/TikTok/TikTok.list,
+      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list,
     }
   Bing:
     {
@@ -419,10 +471,40 @@ rule-providers:
       path: ./rules/Comics.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list,
     }
+  Pikpak:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Pikpak.list,
+      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/PikPak/PikPak.list,
+    }
+  OneDrive:
+    {
+      <<: *RuleProviders,
+      path: ./rules/OneDrive.list,
+      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/OneDrive/OneDrive.list,
+    }
+  Microsoft:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Microsoft.list,
+      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list,
+    }
+  Discord:
+    {
+      <<: *RuleProviders,
+      path: ./rules/Discord.list,
+      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.list,
+    }
 
 rules:
   - RULE-SET,LAN, DIRECT
-  - RULE-SET,Direct, DIRECT
+  - RULE-SET,Github,国外网站
+  - RULE-SET,GitLab,国外网站
+  - RULE-SET,Discord,国外网站
+  - RULE-SET,OneDrive,微软服务
+  - RULE-SET,Microsoft,微软服务
+  - RULE-SET,Direct,DIRECT
+  - RULE-SET,Proxy,兜底分流
   - RULE-SET,AI,AI
   - RULE-SET,Apple,苹果服务
   - RULE-SET,YouTube,谷歌服务
@@ -441,6 +523,7 @@ rules:
   - RULE-SET,Tiktok,国际媒体
   - RULE-SET,Bing,AI
   - RULE-SET,Manual,国外网站
-  - RULE-SET,Comics,国外网站
+  - RULE-SET,Comics,Comic
+  - DOMAIN-SUFFIX,amazonaws.com,国外网站
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
