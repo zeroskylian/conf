@@ -170,18 +170,48 @@ RuleProviders:
   }
 
 proxy-groups:
-  - { name: 香港手动选择, <<: *Select, filter: *FilterHK }
-  - { name: 美国手动选择, <<: *Select, filter: *FilterUS }
-  - { name: 狮城手动选择, <<: *Select, filter: *FilterSG }
-  - { name: 日本手动选择, <<: *Select, filter: *FilterJP }
-  - { name: 台湾手动选择, <<: *Select, filter: *FilterTW }
-  - { name: 韩国手动选择, <<: *Select, filter: *FilterKR }
+  - {
+      name: 香港手动选择,
+      <<: *Select,
+      filter: *FilterHK,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HK.png,
+    }
+  - {
+      name: 美国手动选择,
+      <<: *Select,
+      filter: *FilterUS,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/US.png,
+    }
+  - {
+      name: 狮城手动选择,
+      <<: *Select,
+      filter: *FilterSG,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SG.png,
+    }
+  - {
+      name: 日本手动选择,
+      <<: *Select,
+      filter: *FilterJP,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/JP.png,
+    }
+  - {
+      name: 台湾手动选择,
+      <<: *Select,
+      filter: *FilterTW,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TW.png,
+    }
+  - {
+      name: 韩国手动选择,
+      <<: *Select,
+      filter: *FilterKR,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/KR.png,
+    }
   - { name: ⏱香港时延优选, <<: *UrlTest, filter: *FilterHK }
   - { name: ⏱美国时延优选, <<: *UrlTest, filter: *FilterUS }
   - { name: ⏱狮城时延优选, <<: *UrlTest, filter: *FilterSG }
   - { name: ⏱日本时延优选, <<: *UrlTest, filter: *FilterJP }
   - { name: ⏱台湾时延优选, <<: *UrlTest, filter: *FilterTW }
-  - { name: ⏱韩国时延优选, <<: *Select, filter: *FilterKR }
+  - { name: ⏱韩国时延优选, <<: *UrlTest, filter: *FilterKR }
   - { name: 🚥香港故障转移, <<: *FallBack, filter: *FilterHK }
   - { name: 🚥美国故障转移, <<: *FallBack, filter: *FilterUS }
   - { name: 🚥狮城故障转移, <<: *FallBack, filter: *FilterSG }
