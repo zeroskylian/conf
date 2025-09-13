@@ -7,7 +7,7 @@
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2025-08-24
+# 最后更新时间: 2025-09-13
 #
 # ================
 
@@ -174,50 +174,50 @@ proxy-groups:
       name: 香港手动选择,
       <<: *Select,
       filter: *FilterHK,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HK.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/HK_Select.png,
     }
   - {
       name: 美国手动选择,
       <<: *Select,
       filter: *FilterUS,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/US.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/US_Select.png,
     }
   - {
       name: 狮城手动选择,
       <<: *Select,
       filter: *FilterSG,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SG.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/SG_Select.png,
     }
   - {
       name: 日本手动选择,
       <<: *Select,
       filter: *FilterJP,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/JP.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/JP_Select.png,
     }
   - {
       name: 台湾手动选择,
       <<: *Select,
       filter: *FilterTW,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TW.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/TW_Select.png,
     }
   - {
       name: 韩国手动选择,
       <<: *Select,
       filter: *FilterKR,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/KR.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/KR_Select.png,
     }
-  - { name: ⏱香港时延优选, <<: *UrlTest, filter: *FilterHK }
-  - { name: ⏱美国时延优选, <<: *UrlTest, filter: *FilterUS }
-  - { name: ⏱狮城时延优选, <<: *UrlTest, filter: *FilterSG }
-  - { name: ⏱日本时延优选, <<: *UrlTest, filter: *FilterJP }
-  - { name: ⏱台湾时延优选, <<: *UrlTest, filter: *FilterTW }
-  - { name: ⏱韩国时延优选, <<: *UrlTest, filter: *FilterKR }
-  - { name: 🚥香港故障转移, <<: *FallBack, filter: *FilterHK }
-  - { name: 🚥美国故障转移, <<: *FallBack, filter: *FilterUS }
-  - { name: 🚥狮城故障转移, <<: *FallBack, filter: *FilterSG }
-  - { name: 🚥日本故障转移, <<: *FallBack, filter: *FilterJP }
-  - { name: 🚥台湾故障转移, <<: *FallBack, filter: *FilterTW }
-  - { name: 🚥韩国故障转移, <<: *FallBack, filter: *FilterKR }
+  - { name: 香港时延优选, <<: *UrlTest, filter: *FilterHK }
+  - { name: 美国时延优选, <<: *UrlTest, filter: *FilterUS }
+  - { name: 狮城时延优选, <<: *UrlTest, filter: *FilterSG }
+  - { name: 日本时延优选, <<: *UrlTest, filter: *FilterJP }
+  - { name: 台湾时延优选, <<: *UrlTest, filter: *FilterTW }
+  - { name: 韩国时延优选, <<: *UrlTest, filter: *FilterKR }
+  - { name: 香港故障转移, <<: *FallBack, filter: *FilterHK }
+  - { name: 美国故障转移, <<: *FallBack, filter: *FilterUS }
+  - { name: 狮城故障转移, <<: *FallBack, filter: *FilterSG }
+  - { name: 日本故障转移, <<: *FallBack, filter: *FilterJP }
+  - { name: 台湾故障转移, <<: *FallBack, filter: *FilterTW }
+  - { name: 韩国故障转移, <<: *FallBack, filter: *FilterKR }
   - {
       name: 手动切换,
       type: select,
@@ -234,121 +234,123 @@ proxy-groups:
           手动节点,
           DIRECT,
         ],
-      icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/applesafari.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Safari.png,
     }
   - {
       name: 香港节点,
       type: select,
-      proxies: [香港手动选择, ⏱香港时延优选, 🚥香港故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png,
+      proxies: [香港手动选择, 香港时延优选, 香港故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/HongKong.png,
     }
   - {
       name: 美国节点,
       type: select,
-      proxies: [美国手动选择, ⏱美国时延优选, 🚥美国故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png,
+      proxies: [美国手动选择, 美国时延优选, 美国故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/UnitedStates.png,
     }
   - {
       name: 狮城节点,
       type: select,
-      proxies: [狮城手动选择, ⏱狮城时延优选, 🚥狮城故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png,
+      proxies: [狮城手动选择, 狮城时延优选, 狮城故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Singapore.png,
     }
   - {
       name: 日本节点,
       type: select,
-      proxies: [日本手动选择, ⏱日本时延优选, 🚥日本故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png,
+      proxies: [日本手动选择, 日本时延优选, 日本故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Japan.png,
     }
   - {
       name: 台湾节点,
       type: select,
-      proxies: [台湾手动选择, ⏱台湾时延优选, 🚥台湾故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png,
+      proxies: [台湾手动选择, 台湾时延优选, 台湾故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/China.png,
     }
   - {
       name: 韩国节点,
       type: select,
-      proxies: [韩国手动选择, ⏱韩国时延优选, 🚥韩国故障转移],
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png,
+      proxies: [韩国手动选择, 韩国时延优选, 韩国故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Korea.png,
     }
   - {
       name: 手动节点,
       type: select,
       <<: *Select,
       filter: *FilterAll,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Proxy.png,
     }
   - {
       name: 国外网站,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Global.png,
     }
   - {
       name: 国际媒体,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/YouTube.png,
     }
   - {
       name: 苹果服务,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Apple.png,
     }
   - {
       name: 微软服务,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Microsoft.png,
     }
   - {
       name: 谷歌服务,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/GoogleSearch.png,
     }
   - {
       name: 电报消息,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Telegram.png,
     }
   - {
       name: 推特消息,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Twitter.png,
     }
   - {
       name: AI,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/OpenAI.png,
     }
   - {
       name: 游戏平台,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Game.png,
     }
   - {
       name: Emby,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Emby.png,
     }
   - {
       name: Spotify,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Spotify.png,
     }
   - {
       name: Comic,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Clubhouse.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Clubhouse.png,
     }
   - {
       name: Pikpak,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Pikpak.png,
     }
   - {
       name: 兜底分流,
       <<: *AllGroup,
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Final.png,
     }
+  # - { name: Subscribe1, type: select, use: [Subscribe1] }
+  # - { name: Subscribe2, type: select, use: [Subscribe2] }
 
 rule-providers:
   LAN:
@@ -568,5 +570,7 @@ rules:
   - RULE-SET,Manual,国外网站
   - RULE-SET,Comics,Comic
   - DOMAIN-SUFFIX,amazonaws.com,国外网站
+  - DOMAIN-SUFFIX,boomio-cdn.com,国外网站
+  - DOMAIN-SUFFIX,spankbang.com,国外网站
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
