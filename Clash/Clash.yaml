@@ -1,6 +1,6 @@
 # Author:https://github.com/Repcz
 # TG:https://t.me/QVQ_Channel
-# 原地址: https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Meta/Mihomo.yaml
+# 原地址: https://raw.githubusercontent.com/Repcz/Tool/refs/heads/X/mihomo/Client/config.yaml
 # 官方文档：https://wiki.metacubex.one/
 #
 # 以 '#' 或 '//' 开头的配置文件行为注释行
@@ -28,8 +28,8 @@ geo-auto-update: true
 geo-update-interval: 24
 
 geox-url:
-  # geoip: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
-  # geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  geoip: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
   mmdb: "https://geodata.kelee.one/Country-Masaiki.mmdb"
   asn: "https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb"
 
@@ -141,7 +141,7 @@ UrlTest:
     interval: 6,
     tolerance: 20,
     lazy: true,
-    url: "http://www.google.com/blank.html",
+    url: "http://1.1.1.1/generate_204",
     disable-udp: false,
     timeout: 2000,
     max-failed-times: 3,
@@ -154,7 +154,7 @@ FallBack:
     type: fallback,
     interval: 6,
     lazy: true,
-    url: "http://www.google.com/blank.html",
+    url: "http://1.1.1.1/generate_204",
     disable-udp: false,
     timeout: 2000,
     max-failed-times: 3,
@@ -325,13 +325,19 @@ rule-providers:
     {
       <<: *RuleProviders,
       path: "./rules/Lan.list",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Lan/Lan.list",
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list",
+    }
+  DirectManual:
+    {
+      <<: *RuleProviders,
+      path: "./rules/DirectManual.list",
+      url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list",
     }
   Direct:
     {
       <<: *RuleProviders,
       path: "./rules/Direct.list",
-      url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list",
+      url: "https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Direct.list",
     }
   Proxy:
     {
@@ -350,6 +356,12 @@ rule-providers:
       <<: *RuleProviders,
       path: ./rules/Apple.list,
       url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list,
+    }
+  AppleProxy:
+    {
+      <<: *RuleProviders,
+      path: ./rules/AppleProxy.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AppleServers.list,
     }
   YouTube:
     {
@@ -507,6 +519,7 @@ rules:
   - RULE-SET,Proxy,兜底分流
   - RULE-SET,AI,AI
   - RULE-SET,Apple,苹果服务
+  - RULE-SET,AppleProxy,香港节点
   - RULE-SET,YouTube,谷歌服务
   - RULE-SET,Google,谷歌服务
   - RULE-SET,Telegram,电报消息
