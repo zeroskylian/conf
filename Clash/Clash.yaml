@@ -381,13 +381,13 @@ rule-providers:
     {
       <<: *RuleProviders,
       path: ./rules/AD.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Reject.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Reject.list,
     }
   Apple:
     {
       <<: *RuleProviders,
       path: ./rules/Apple.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Apple.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Apple.list,
     }
   AppleProxy:
     {
@@ -399,85 +399,85 @@ rule-providers:
     {
       <<: *RuleProviders,
       path: ./rules/YouTube.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/YouTube.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/YouTube.list,
     }
   Google:
     {
       <<: *RuleProviders,
       path: ./rules/Google.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Google.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Google.list,
     }
   Telegram:
     {
       <<: *RuleProviders,
       path: ./rules/Telegram.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Telegram.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Telegram.list,
     }
   Twitter:
     {
       <<: *RuleProviders,
       path: ./rules/Twitter.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Twitter.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Twitter.list,
     }
   Steam:
     {
       <<: *RuleProviders,
       path: ./rules/Steam.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Steam.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Steam.list,
     }
   Epic:
     {
       <<: *RuleProviders,
       path: ./rules/Epic.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Epic.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Epic.list,
     }
   AI:
     {
       <<: *RuleProviders,
       path: ./rules/AI.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/AI.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AI.list,
     }
   Emby:
     {
       <<: *RuleProviders,
       path: ./rules/Emby.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Emby.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Emby.list,
     }
   Spotify:
     {
       <<: *RuleProviders,
       path: ./rules/Spotify.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Spotify.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Spotify.list,
     }
   Bahamut:
     {
       <<: *RuleProviders,
       path: ./rules/Bahamut.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Bahamut.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Bahamut.list,
     }
   Netflix:
     {
       <<: *RuleProviders,
       path: ./rules/Netflix.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Netflix.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Netflix.list,
     }
   Disney:
     {
       <<: *RuleProviders,
       path: ./rules/Disney.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Disney.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Disney.list,
     }
   PrimeVideo:
     {
       <<: *RuleProviders,
       path: ./rules/PrimeVideo.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/PrimeVideo.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/PrimeVideo.list,
     }
   HBO:
     {
       <<: *RuleProviders,
       path: ./rules/HBO.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/HBO.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/HBO.list,
     }
   Tiktok:
     {
@@ -495,7 +495,7 @@ rule-providers:
     {
       <<: *RuleProviders,
       path: ./rules/Github.list,
-      url: https://github.com/Repcz/Tool/raw/X/Clash/Rules/Github.list,
+      url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Github.list,
     }
   GitLab:
     {
