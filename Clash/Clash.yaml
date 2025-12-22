@@ -570,7 +570,5 @@ rules:
   - RULE-SET,Manual,国外网站
   - RULE-SET,Comics,Comic
   - DOMAIN-SUFFIX,amazonaws.com,国外网站
-  - DOMAIN-SUFFIX,boomio-cdn.com,国外网站
-  - DOMAIN-SUFFIX,spankbang.com,国外网站
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
