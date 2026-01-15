@@ -1,5 +1,10 @@
 DOMAIN-SUFFIX,agony.free.hr
-DOMAIN-SUFFIX,cxm.us.kg
 
+DOMAIN-KEYWORD,diabrowser.engineering
 DOMAIN-SUFFIX,diabrowser.com
 DOMAIN-SUFFIX,diabrowser.engineering
+
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,apple-relay.cloudflare.com
+DOMAIN-KEYWORD,apple-relay
+DOMAIN-SUFFIX,googleapis.com
