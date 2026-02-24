@@ -1,12 +1,15 @@
 DOMAIN,api.palera.in
 
 DOMAIN-SUFFIX,aihubmix.com
+DOMAIN-SUFFIX,cauenvao.click
 DOMAIN-SUFFIX,facal.one
 DOMAIN-SUFFIX,fuliba.app
 DOMAIN-SUFFIX,ibm.com
 DOMAIN-SUFFIX,localhost.com
 DOMAIN-SUFFIX,plex.tv
 DOMAIN-SUFFIX,qaq.wiki
+DOMAIN-SUFFIX,selectgroup.click
 DOMAIN-SUFFIX,staticfile.org
 DOMAIN-SUFFIX,steamserver.net # 用于判断用户所在地区分配下载CDN的地址
+DOMAIN,tagss13.pro
 DOMAIN-SUFFIX,yiruan.info
