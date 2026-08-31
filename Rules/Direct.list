@@ -1,4 +1,5 @@
 DOMAIN,api.palera.in
+DOMAIN,tagss13.pro
 
 DOMAIN-SUFFIX,adguard.com
 DOMAIN-SUFFIX,aihubmix.com
@@ -13,5 +14,4 @@ DOMAIN-SUFFIX,qaq.wiki
 DOMAIN-SUFFIX,selectgroup.click
 DOMAIN-SUFFIX,staticfile.org
 DOMAIN-SUFFIX,steamserver.net # 用于判断用户所在地区分配下载CDN的地址
-DOMAIN,tagss13.pro
 DOMAIN-SUFFIX,yiruan.info
