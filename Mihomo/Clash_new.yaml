@@ -1,9 +1,10 @@
 # Mihomo 配置：Clash_new.yaml
 # 规则方案：混合规则源，使用 MagicRule YAML 与传统 text 规则集
 # 基于 Repcz 配置整理：https://github.com/Repcz
-# 原作者频道：https://t.me/QVQ_Channel
+# 原作者频道：https://t.me/LUCYChannel_1024
 # 原始配置：https://raw.githubusercontent.com/Repcz/Tool/refs/heads/X/mihomo/Client/config.yaml
 # 官方文档：https://wiki.metacubex.one/
+# 参考上游版本：2026-09-17；适用内核：Mihomo ≥ 1.19.31
 #
 # 使用前请填写 proxy-providers 中的订阅 URL，未使用的订阅需同步调整引用。
 # YAML 注释使用 #；修改规则时请注意从上到下的匹配顺序。
@@ -40,6 +41,8 @@ profile:
 # 域名嗅探
 sniffer:
   enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
   sniff:
     HTTP:
       ports:
@@ -60,13 +63,17 @@ sniffer:
 # TUN 设置
 tun:
   enable: true
-  stack: mixed
+  stack: mips
   dns-hijack:
     - any:53
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: false
 
 # DNS 设置
 dns:
   enable: true
+  cache-algorithm: arc
   ipv6: false
   enhanced-mode: fake-ip
   listen: :1053
@@ -78,10 +85,25 @@ dns:
     - "+.direct"
     - "+.msftconnecttest.com"
     - "+.msftncsi.com"
+    - "+.cmpassport.com"
+    - "id6.me"
+    - "open.e.189.cn"
+    - "mdn.open.wo.cn"
+    - "opencloud.wostore.cn"
+    - "auth.wosms.cn"
+    - "+.10099.com.cn"
+    - "lancache.steamcontent.com"
+  # 优先使用 Google DNS，失败或未获得 IP 时再查询备用 DNS。
   nameserver:
     - 8.8.8.8
+  fallback:
     - 223.5.5.5
     - 119.29.29.29
+  fallback-lazy-query: true
+  fallback-filter:
+    # 不因返回国外 IP 而触发回退。
+    geoip: false
+    ipcidr: []
   nameserver-policy:
     "rule-set:AD": rcode://success
 
