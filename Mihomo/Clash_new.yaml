@@ -7,7 +7,7 @@
 #
 # Mihomo Version ≥ 1.8.10
 #
-# 最后更新时间: 2026-02-25
+# 最后更新时间: 2024-12-21
 #
 # ================
 
@@ -19,7 +19,6 @@ mode: rule
 log-level: info
 udp: true
 unified-delay: true
-global-client-fingerprint: chrome
 find-process-mode: strict
 
 geodata-mode: false
@@ -28,10 +27,10 @@ geo-auto-update: true
 geo-update-interval: 24
 
 geox-url:
-  geoip: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
-  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-  mmdb: "https://geodata.kelee.one/Country-Masaiki.mmdb"
-  asn: "https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb"
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+  asn: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb"
 
 profile:
   store-selected: true
@@ -86,27 +85,26 @@ NodeParam:
       },
   }
 proxy-providers:
-  # 注释
-  # Subscribe: # 在此将 "http://your-service-provider" 替换为你的机场订阅，推荐使用 base64 或者 node list
-  #   url: http://your-service-provider
-  #   <<: *NodeParam
-  #   override: # 修改节点前后缀时，需移除前方的 "#" 符号
-  #     additional-prefix: "节点前缀"
-  #     additional-suffix: "节点后缀"
-  Subscribe:
-    url: http://your-service-provider
+  Provider1:
+    url: ""
     <<: *NodeParam
     override:
-      additional-prefix: "节点前缀"
-      additional-suffix: "节点后缀"
-  Subscribe2:
-    url: http://your-service-provider
+      additional-prefix: "[Provider1]"
+  Provider2:
+    url: ""
     <<: *NodeParam
     override:
-      additional-prefix: "节点前缀"
-      additional-suffix: "节点后缀"
-  #Subscribe3: {url: http://your-service-provider, <<: *NodeParam}
-  #Subscribe4: {url: http://your-service-provider, <<: *NodeParam}
+      additional-prefix: "[Provider2]"
+  Provider3:
+    url: ""
+    <<: *NodeParam
+    override:
+      additional-prefix: "[Provider3]"
+  Provider4:
+    url: ""
+    <<: *NodeParam
+    override:
+      additional-prefix: "[Provider4]"
 
 # 锚点 - 节点筛选组
 FilterHK: &FilterHK '^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
@@ -115,6 +113,8 @@ FilterJP: &FilterJP '^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼�
 FilterKR: &FilterKR '^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
 FilterSG: &FilterSG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
 FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States|USA)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
+FilterHome: &FilterHome "^(?=.*((?i)家宽|home|宽带|broadband))"
+FilterGame: &FilterGame '^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$'
 FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|卡顿|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
 
 # 锚点参数
@@ -131,9 +131,17 @@ AllGroup:
         台湾节点,
         韩国节点,
         手动节点,
+        家宽,
         DIRECT,
       ],
   }
+
+AllProvider: &AllProvider
+  - Provider1
+  - Provider2
+  - Provider3
+  - Provider4
+
 UrlTest:
   &UrlTest {
     type: url-test,
@@ -147,7 +155,9 @@ UrlTest:
     hidden: true,
     include-all-providers: true,
   }
+
 Select: &Select { type: select, include-all: true }
+
 FallBack:
   &FallBack {
     type: fallback,
@@ -160,6 +170,7 @@ FallBack:
     hidden: true,
     include-all-providers: true,
   }
+
 RuleProviders:
   &RuleProviders {
     type: http,
@@ -168,43 +179,15 @@ RuleProviders:
     interval: 86400,
   }
 
+YamlRuleProviders:
+  &YamlRuleProviders {
+    type: http,
+    behavior: classical,
+    format: yaml,
+    interval: 86400,
+  }
+
 proxy-groups:
-  - {
-      name: 香港手动选择,
-      <<: *Select,
-      filter: *FilterHK,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/HK_Select.png,
-    }
-  - {
-      name: 美国手动选择,
-      <<: *Select,
-      filter: *FilterUS,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/US_Select.png,
-    }
-  - {
-      name: 狮城手动选择,
-      <<: *Select,
-      filter: *FilterSG,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/SG_Select.png,
-    }
-  - {
-      name: 日本手动选择,
-      <<: *Select,
-      filter: *FilterJP,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/JP_Select.png,
-    }
-  - {
-      name: 台湾手动选择,
-      <<: *Select,
-      filter: *FilterTW,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/TW_Select.png,
-    }
-  - {
-      name: 韩国手动选择,
-      <<: *Select,
-      filter: *FilterKR,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/KR_Select.png,
-    }
   - { name: 香港时延优选, <<: *UrlTest, filter: *FilterHK }
   - { name: 美国时延优选, <<: *UrlTest, filter: *FilterUS }
   - { name: 狮城时延优选, <<: *UrlTest, filter: *FilterSG }
@@ -217,6 +200,61 @@ proxy-groups:
   - { name: 日本故障转移, <<: *FallBack, filter: *FilterJP }
   - { name: 台湾故障转移, <<: *FallBack, filter: *FilterTW }
   - { name: 韩国故障转移, <<: *FallBack, filter: *FilterKR }
+  - {
+      name: 香港节点,
+      type: select,
+      proxies: [香港时延优选, 香港故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/HongKong.png,
+      use: *AllProvider,
+      filter: *FilterHK,
+    }
+  - {
+      name: 美国节点,
+      type: select,
+      proxies: [美国时延优选, 美国故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/UnitedStates.png,
+      use: *AllProvider,
+      filter: *FilterUS,
+    }
+  - {
+      name: 狮城节点,
+      type: select,
+      proxies: [狮城时延优选, 狮城故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Singapore.png,
+      use: *AllProvider,
+      filter: *FilterSG,
+    }
+  - {
+      name: 日本节点,
+      type: select,
+      proxies: [日本时延优选, 日本故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Japan.png,
+      use: *AllProvider,
+      filter: *FilterJP,
+    }
+  - {
+      name: 台湾节点,
+      type: select,
+      proxies: [台湾时延优选, 台湾故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/China.png,
+      use: *AllProvider,
+      filter: *FilterTW,
+    }
+  - {
+      name: 韩国节点,
+      type: select,
+      proxies: [韩国时延优选, 韩国故障转移],
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Korea.png,
+      use: *AllProvider,
+      filter: *FilterKR,
+    }
+  - {
+      name: 手动节点,
+      type: select,
+      <<: *Select,
+      filter: *FilterAll,
+      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Proxy.png,
+    }
   - {
       name: 手动切换,
       type: select,
@@ -231,52 +269,16 @@ proxy-groups:
           台湾节点,
           韩国节点,
           手动节点,
+          家宽,
           DIRECT,
         ],
       icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Safari.png,
     }
   - {
-      name: 香港节点,
-      type: select,
-      proxies: [香港手动选择, 香港时延优选, 香港故障转移],
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/HongKong.png,
-    }
-  - {
-      name: 美国节点,
-      type: select,
-      proxies: [美国手动选择, 美国时延优选, 美国故障转移],
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/UnitedStates.png,
-    }
-  - {
-      name: 狮城节点,
-      type: select,
-      proxies: [狮城手动选择, 狮城时延优选, 狮城故障转移],
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Singapore.png,
-    }
-  - {
-      name: 日本节点,
-      type: select,
-      proxies: [日本手动选择, 日本时延优选, 日本故障转移],
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Japan.png,
-    }
-  - {
-      name: 台湾节点,
-      type: select,
-      proxies: [台湾手动选择, 台湾时延优选, 台湾故障转移],
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/China.png,
-    }
-  - {
-      name: 韩国节点,
-      type: select,
-      proxies: [韩国手动选择, 韩国时延优选, 韩国故障转移],
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/country/Korea.png,
-    }
-  - {
-      name: 手动节点,
-      type: select,
+      name: 家宽,
       <<: *Select,
-      filter: *FilterAll,
-      icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Proxy.png,
+      filter: *FilterHome,
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Area.png,
     }
   - {
       name: 国外网站,
@@ -348,237 +350,235 @@ proxy-groups:
       <<: *AllGroup,
       icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Final.png,
     }
-  # - { name: Subscribe1, type: select, use: [Subscribe1] }
-  # - { name: Subscribe2, type: select, use: [Subscribe2] }
+  - { name: Provider1, type: select, use: [Provider1] }
+  - { name: Provider2, type: select, use: [Provider2] }
+  - { name: Provider3, type: select, use: [Provider3] }
+  - { name: Provider4, type: select, use: [Provider4] }
 
 rule-providers:
   LAN:
     {
-      <<: *RuleProviders,
-      path: "./rules/Lan.list",
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list",
+      <<: *YamlRuleProviders,
+      path: "./rules/new/Lan.yaml",
+      url: "https://magicrule.pages.dev/data/_shared/artifacts/Lan_classical_c34e1546d84707e3.yaml",
     }
   DirectManual:
     {
       <<: *RuleProviders,
-      path: "./rules/DirectManual.list",
+      path: "./rules/new/DirectManual.list",
       url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list",
     }
   Direct:
     {
       <<: *RuleProviders,
-      path: "./rules/Direct.list",
+      path: "./rules/new/Direct.list",
       url: "https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Direct.list",
     }
   Proxy:
     {
       <<: *RuleProviders,
-      path: "./rules/Proxy.yaml",
-      url: "https://kelee.one/Tool/Clash/Rule/Proxy.yaml",
+      path: "./rules/new/Proxy.list",
+      url: "https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Proxy.list",
     }
   AD:
     {
       <<: *RuleProviders,
-      path: ./rules/AD.list,
+      path: ./rules/new/AD.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Reject.list,
     }
   Apple:
     {
       <<: *RuleProviders,
-      path: ./rules/Apple.list,
+      path: ./rules/new/Apple.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Apple.list,
     }
   AppleProxy:
     {
       <<: *RuleProviders,
-      path: ./rules/AppleProxy.list,
+      path: ./rules/new/AppleProxy.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AppleServers.list,
     }
   YouTube:
     {
       <<: *RuleProviders,
-      path: ./rules/YouTube.list,
+      path: ./rules/new/YouTube.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/YouTube.list,
     }
   Google:
     {
       <<: *RuleProviders,
-      path: ./rules/Google.list,
+      path: ./rules/new/Google.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Google.list,
     }
   Telegram:
     {
       <<: *RuleProviders,
-      path: ./rules/Telegram.list,
+      path: ./rules/new/Telegram.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Telegram.list,
     }
   Twitter:
     {
       <<: *RuleProviders,
-      path: ./rules/Twitter.list,
+      path: ./rules/new/Twitter.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Twitter.list,
     }
-  GameDownloadCN:
+  GameDownload:
     {
-      <<: *RuleProviders,
-      path: ./rules/GameDownloadCN.list,
-      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/GameDownload.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/GameDownload_classical_323bbd133b5a7f3d.yaml,
     }
   SteamCN:
     {
-      <<: *RuleProviders,
-      path: ./rules/SteamCN.list,
-      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/SteamCN.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/SteamCN_classical_f12eaf58b7866555.yaml,
     }
   Steam:
     {
       <<: *RuleProviders,
-      path: ./rules/Steam.list,
+      path: ./rules/new/Steam.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Steam.list,
     }
   Epic:
     {
       <<: *RuleProviders,
-      path: ./rules/Epic.list,
+      path: ./rules/new/Epic.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Epic.list,
     }
   AI:
     {
       <<: *RuleProviders,
-      path: ./rules/AI.list,
+      path: ./rules/new/AI.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AI.list,
     }
   Emby:
     {
       <<: *RuleProviders,
-      path: ./rules/Emby.list,
+      path: ./rules/new/Emby.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Emby.list,
     }
   Spotify:
     {
       <<: *RuleProviders,
-      path: ./rules/Spotify.list,
+      path: ./rules/new/Spotify.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Spotify.list,
     }
   Bahamut:
     {
       <<: *RuleProviders,
-      path: ./rules/Bahamut.list,
+      path: ./rules/new/Bahamut.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Bahamut.list,
     }
   Netflix:
     {
       <<: *RuleProviders,
-      path: ./rules/Netflix.list,
+      path: ./rules/new/Netflix.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Netflix.list,
     }
   Disney:
     {
       <<: *RuleProviders,
-      path: ./rules/Disney.list,
+      path: ./rules/new/Disney.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Disney.list,
     }
   PrimeVideo:
     {
       <<: *RuleProviders,
-      path: ./rules/PrimeVideo.list,
+      path: ./rules/new/PrimeVideo.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/PrimeVideo.list,
     }
   HBO:
     {
       <<: *RuleProviders,
-      path: ./rules/HBO.list,
+      path: ./rules/new/HBO.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/HBO.list,
     }
   Tiktok:
     {
-      <<: *RuleProviders,
-      path: ./rules/Tiktok.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/Tiktok.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/TikTok_classical_c510421d706b99d3.yaml,
     }
   Bing:
     {
-      <<: *RuleProviders,
-      path: ./rules/Bing.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/Bing/Bing.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/Bing.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/Bing_classical_882bef9c77b77af5.yaml,
     }
   Github:
     {
       <<: *RuleProviders,
-      path: ./rules/Github.list,
+      path: ./rules/new/Github.list,
       url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Github.list,
     }
   GitLab:
     {
-      <<: *RuleProviders,
-      path: ./rules/GitLab.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Clash/GitLab/GitLab.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/GitLab.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/GitLab_classical_9c36f4c59060f246.yaml,
     }
   Manual:
     {
       <<: *RuleProviders,
-      path: ./rules/Manual.list,
+      path: ./rules/new/Manual.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list,
     }
   Comics:
     {
       <<: *RuleProviders,
-      path: ./rules/Comics.list,
+      path: ./rules/new/Comics.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list,
     }
   Pikpak:
     {
-      <<: *RuleProviders,
-      path: ./rules/Pikpak.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/PikPak/PikPak.list,
-    }
-  OneDrive:
-    {
-      <<: *RuleProviders,
-      path: ./rules/OneDrive.list,
-      url: https://raw.githubusercontent.com/zeroskylian/ios_rule_script/refs/heads/master/rule/Clash/OneDrive/OneDrive.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/Pikpak.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/PikPak_classical_5bc55f33e826c928.yaml,
     }
   Microsoft:
     {
-      <<: *RuleProviders,
-      path: ./rules/Microsoft.list,
-      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/Microsoft.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/Microsoft_classical_e67099aa280f921f.yaml,
     }
   Discord:
     {
-      <<: *RuleProviders,
-      path: ./rules/Discord.list,
-      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Discord/Discord.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/Discord.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/Discord_classical_6d212a56316192c6.yaml,
     }
   Yandex:
     {
-      <<: *RuleProviders,
-      path: ./rules/Yandex.list,
-      url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Yandex/Yandex.list,
+      <<: *YamlRuleProviders,
+      path: ./rules/new/Yandex.yaml,
+      url: https://magicrule.pages.dev/data/_shared/artifacts/Yandex_classical_48a647853736a36d.yaml,
     }
   JPList:
     {
       <<: *RuleProviders,
-      path: ./rules/JP.list,
+      path: ./rules/new/JP.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/refs/heads/main/Rules/JP.list,
     }
   USList:
     {
       <<: *RuleProviders,
-      path: ./rules/US.list,
+      path: ./rules/new/US.list,
       url: https://raw.githubusercontent.com/zeroskylian/conf/refs/heads/main/Rules/US.list,
     }
 
 rules:
-  - RULE-SET,LAN, DIRECT
-  - DOMAIN-SUFFIX,测试域名.com,国外网站
+  - RULE-SET,LAN,DIRECT
+  - DOMAIN-SUFFIX,webdav.lianxinbo.workers.dev,香港节点
+  - DOMAIN-SUFFIX,musicfree.catcat.work,香港节点
+  - DOMAIN-SUFFIX,infini-cloud.net,香港节点
+  - DOMAIN-SUFFIX,adguard.com,DIRECT
+  - DOMAIN-SUFFIX,selectgroup.click,DIRECT
   - RULE-SET,Github,国外网站
   - RULE-SET,GitLab,国外网站
   - RULE-SET,Discord,国外网站
-  - RULE-SET,OneDrive,微软服务
   - RULE-SET,Microsoft,微软服务
   - RULE-SET,Direct,DIRECT
-  - RULE-SET,Proxy,兜底分流
   - RULE-SET,AI,AI
   - RULE-SET,Apple,苹果服务
   - RULE-SET,AppleProxy,香港节点
@@ -586,7 +586,7 @@ rules:
   - RULE-SET,Google,谷歌服务
   - RULE-SET,Telegram,电报消息
   - RULE-SET,Twitter,推特消息
-  - RULE-SET,GameDownloadCN,DIRECT
+  - RULE-SET,GameDownload,DIRECT
   - RULE-SET,SteamCN,DIRECT
   - RULE-SET,Steam,游戏平台
   - RULE-SET,Epic,游戏平台
@@ -604,5 +604,6 @@ rules:
   - RULE-SET,USList,美国节点
   - RULE-SET,Manual,国外网站
   - RULE-SET,Comics,Comic
+  - RULE-SET,Proxy,兜底分流
   - GEOIP,CN,DIRECT
   - MATCH,兜底分流
