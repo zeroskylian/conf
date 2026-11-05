@@ -93,9 +93,10 @@ NodeParam: &NodeParam
   interval: 86400
   health-check:
     enable: true
-    url: http://1.1.1.1/generate_204
-    interval: 1800
+    url: https://www.gstatic.com/generate_204
+    interval: 300
     timeout: 5000
+    expected-status: 204
 
 # 节点订阅
 proxy-providers:
@@ -128,7 +129,6 @@ FilterKR: &FilterKR '^(?=.*((?i)🇰🇷|韩国|韓|首尔|(\b(KR|Korea)(\d+)?\b
 FilterSG: &FilterSG '^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
 FilterUS: &FilterUS '^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States|USA)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|🎮|(\b(GAME)\b))).*$'
 FilterHome: &FilterHome "^(?=.*((?i)家宽|home|宽带|broadband))"
-FilterGame: &FilterGame '^(?=.*((?i)游戏|🎮|(\b(GAME)(\d+)?\b)))(?!.*((?i)回国|校园)).*$'
 FilterAll: &FilterAll '^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|卡顿|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$'
 
 # 锚点参数
@@ -154,10 +154,11 @@ AllProvider: &AllProvider
 
 UrlTest: &UrlTest
   type: url-test
-  interval: 6
+  interval: 300
   tolerance: 20
   lazy: true
-  url: "http://1.1.1.1/generate_204"
+  url: "https://www.gstatic.com/generate_204"
+  expected-status: 204
   disable-udp: false
   timeout: 2000
   max-failed-times: 3
@@ -170,9 +171,10 @@ Select: &Select
 
 FallBack: &FallBack
   type: fallback
-  interval: 6
+  interval: 300
   lazy: true
-  url: "http://1.1.1.1/generate_204"
+  url: "https://www.gstatic.com/generate_204"
+  expected-status: 204
   disable-udp: false
   timeout: 2000
   max-failed-times: 3
@@ -500,11 +502,14 @@ rule-providers:
 # 分流规则（按顺序匹配）
 rules:
   - RULE-SET,LAN,DIRECT
+  # 手动直连优先于通用分流规则
+  - RULE-SET,DirectManual,DIRECT
   - DOMAIN-SUFFIX,webdav.lianxinbo.workers.dev,香港节点
   - DOMAIN-SUFFIX,musicfree.catcat.work,香港节点
   - DOMAIN-SUFFIX,infini-cloud.net,香港节点
   - DOMAIN-SUFFIX,adguard.com,DIRECT
   - DOMAIN-SUFFIX,selectgroup.click,DIRECT
+  - RULE-SET,Pikpak,Pikpak
   - RULE-SET,Github,国外网站
   - RULE-SET,GitLab,国外网站
   - RULE-SET,Discord,国外网站

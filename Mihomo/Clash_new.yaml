@@ -93,9 +93,10 @@ NodeParam: &NodeParam
   interval: 86400
   health-check:
     enable: true
-    url: http://1.1.1.1/generate_204
-    interval: 1800
+    url: https://www.gstatic.com/generate_204
+    interval: 300
     timeout: 5000
+    expected-status: 204
 
 # 节点订阅
 proxy-providers:
@@ -154,10 +155,11 @@ AllProvider: &AllProvider
 
 UrlTest: &UrlTest
   type: url-test
-  interval: 6
+  interval: 300
   tolerance: 20
   lazy: true
-  url: "http://1.1.1.1/generate_204"
+  url: "https://www.gstatic.com/generate_204"
+  expected-status: 204
   disable-udp: false
   timeout: 2000
   max-failed-times: 3
@@ -170,9 +172,10 @@ Select: &Select
 
 FallBack: &FallBack
   type: fallback
-  interval: 6
+  interval: 300
   lazy: true
-  url: "http://1.1.1.1/generate_204"
+  url: "https://www.gstatic.com/generate_204"
+  expected-status: 204
   disable-udp: false
   timeout: 2000
   max-failed-times: 3
@@ -361,6 +364,7 @@ proxy-groups:
       - Provider4
 
 # 规则订阅
+# MagicRule 地址以站点 manifest 的 classical 产物为准，勿直接删除文件名中的哈希。
 rule-providers:
   LAN:
     <<: *YamlRuleProviders
@@ -506,11 +510,14 @@ rule-providers:
 # 分流规则（按顺序匹配）
 rules:
   - RULE-SET,LAN,DIRECT
+  # 手动直连优先于通用分流规则
+  - RULE-SET,DirectManual,DIRECT
   - DOMAIN-SUFFIX,webdav.lianxinbo.workers.dev,香港节点
   - DOMAIN-SUFFIX,musicfree.catcat.work,香港节点
   - DOMAIN-SUFFIX,infini-cloud.net,香港节点
   - DOMAIN-SUFFIX,adguard.com,DIRECT
   - DOMAIN-SUFFIX,selectgroup.click,DIRECT
+  - RULE-SET,Pikpak,Pikpak
   - RULE-SET,Github,国外网站
   - RULE-SET,GitLab,国外网站
   - RULE-SET,Discord,国外网站
