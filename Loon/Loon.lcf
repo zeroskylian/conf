@@ -133,9 +133,6 @@ https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Manual.list, polic
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/PikPak/PikPak.list, policy=香港节点, tag=PikPak.list, enabled=true
 https://kelee.one/Tool/Loon/Lsr/TikTok.lsr, policy=日本节点, tag=TikTok, enabled=true
 
-# > Git
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/GitLab/GitLab.list, policy=美国节点, tag=GitLab, enabled=true
-
 # > 社交平台
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Twitter/Twitter.list, policy=美国节点, tag=Twitter, enabled=true
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Telegram/Telegram.list, policy=香港节点, tag=Telegram, enabled=true
