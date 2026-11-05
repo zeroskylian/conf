@@ -25,7 +25,7 @@ find-process-mode: strict
 geodata-mode: false
 geodata-loader: standard
 geo-auto-update: true
-geo-update-interval: 24
+geo-update-interval: 72
 
 geox-url:
   geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
@@ -174,8 +174,8 @@ AllProvider: &AllProvider
 
 UrlTest: &UrlTest
   type: url-test
-  interval: 300
-  tolerance: 20
+  interval: 600
+  tolerance: 100
   lazy: true
   url: "https://www.gstatic.com/generate_204"
   expected-status: 204
@@ -191,7 +191,7 @@ Select: &Select
 
 FallBack: &FallBack
   type: fallback
-  interval: 300
+  interval: 600
   lazy: true
   url: "https://www.gstatic.com/generate_204"
   expected-status: 204
