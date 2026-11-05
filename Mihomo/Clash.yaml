@@ -1,15 +1,13 @@
-# Author: https://github.com/Repcz
-# TG: https://t.me/QVQ_Channel
-# 原地址: https://raw.githubusercontent.com/Repcz/Tool/refs/heads/X/mihomo/Client/config.yaml
+# Mihomo 配置：Clash.yaml
+# 规则方案：传统规则源，使用 classical / text 规则集
+# 基于 Repcz 配置整理：https://github.com/Repcz
+# 原作者频道：https://t.me/QVQ_Channel
+# 原始配置：https://raw.githubusercontent.com/Repcz/Tool/refs/heads/X/mihomo/Client/config.yaml
 # 官方文档：https://wiki.metacubex.one/
 #
-# 以 '#' 或 '//' 开头的配置文件行为注释行
-#
-# Mihomo Version ≥ 1.8.10
-#
-# 最后更新时间: 2024-12-21
-#
-# ================
+# 使用前请填写 proxy-providers 中的订阅 URL，未使用的订阅需同步调整引用。
+# YAML 注释使用 #；修改规则时请注意从上到下的匹配顺序。
+# 最后更新时间：2026-11-05
 
 # 基础设置
 mixed-port: 7897
@@ -328,6 +326,7 @@ proxy-groups:
     <<: *AllGroup
     icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Emby.png
   - name: Spotify
+    hidden: true
     <<: *AllGroup
     icon: https://raw.githubusercontent.com/zeroskylian/conf/main/Icon/app/Spotify.png
   - name: Comic
@@ -361,47 +360,47 @@ rule-providers:
   LAN:
     <<: *RuleProviders
     path: "./rules/clash/Lan.list"
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.list
   DirectManual:
     <<: *RuleProviders
     path: "./rules/clash/DirectManual.list"
-    url: "https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list"
+    url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list
   Direct:
     <<: *RuleProviders
     path: "./rules/clash/Direct.list"
-    url: "https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Direct.list"
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Direct.list
   Proxy:
     <<: *RuleProviders
     path: "./rules/clash/Proxy.list"
-    url: "https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Proxy.list"
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Proxy.list
   AD:
     <<: *RuleProviders
     path: ./rules/clash/AD.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Reject.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Reject.list
   Apple:
     <<: *RuleProviders
     path: ./rules/clash/Apple.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Apple.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Apple.list
   AppleProxy:
     <<: *RuleProviders
     path: ./rules/clash/AppleProxy.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AppleServers.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/AppleServers.list
   YouTube:
     <<: *RuleProviders
     path: ./rules/clash/YouTube.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/YouTube.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/YouTube.list
   Google:
     <<: *RuleProviders
     path: ./rules/clash/Google.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Google.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Google.list
   Telegram:
     <<: *RuleProviders
     path: ./rules/clash/Telegram.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Telegram.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Telegram.list
   Twitter:
     <<: *RuleProviders
     path: ./rules/clash/Twitter.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Twitter.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Twitter.list
   GameDownloadCN:
     <<: *RuleProviders
     path: ./rules/clash/GameDownloadCN.list
@@ -413,43 +412,43 @@ rule-providers:
   Steam:
     <<: *RuleProviders
     path: ./rules/clash/Steam.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Steam.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Steam.list
   Epic:
     <<: *RuleProviders
     path: ./rules/clash/Epic.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Epic.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Epic.list
   AI:
     <<: *RuleProviders
     path: ./rules/clash/AI.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/AI.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/AI.list
   Emby:
     <<: *RuleProviders
     path: ./rules/clash/Emby.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Emby.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Emby.list
   Spotify:
     <<: *RuleProviders
     path: ./rules/clash/Spotify.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Spotify.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Spotify.list
   Bahamut:
     <<: *RuleProviders
     path: ./rules/clash/Bahamut.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Bahamut.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Bahamut.list
   Netflix:
     <<: *RuleProviders
     path: ./rules/clash/Netflix.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Netflix.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Netflix.list
   Disney:
     <<: *RuleProviders
     path: ./rules/clash/Disney.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Disney.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Disney.list
   PrimeVideo:
     <<: *RuleProviders
     path: ./rules/clash/PrimeVideo.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/PrimeVideo.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/PrimeVideo.list
   HBO:
     <<: *RuleProviders
     path: ./rules/clash/HBO.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/HBO.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/HBO.list
   Tiktok:
     <<: *RuleProviders
     path: ./rules/clash/Tiktok.list
@@ -461,7 +460,7 @@ rule-providers:
   Github:
     <<: *RuleProviders
     path: ./rules/clash/Github.list
-    url: https://github.com/Repcz/Tool/raw/X/mihomo/Rules/Github.list
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/mihomo/Rules/Github.list
   GitLab:
     <<: *RuleProviders
     path: ./rules/clash/GitLab.list
