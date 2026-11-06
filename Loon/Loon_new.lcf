@@ -90,6 +90,7 @@ FINAL,兜底分流
 https://kelee.one/Tool/Loon/Lsr/LAN_SPLITTER.lsr, policy=DIRECT, tag=LAN, enabled=true
 
 # > 手动列表
+https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Reject.list, policy=REJECT, tag=手动拒绝, enabled=true
 https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list, policy=DIRECT, tag=直连, enabled=true
 
 # > 苹果服务
