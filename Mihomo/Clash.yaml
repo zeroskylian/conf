@@ -387,6 +387,11 @@ rule-providers:
     <<: *RuleProviders
     path: "./rules/clash/DirectManual.list"
     url: https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list
+  WeChat:
+    <<: *RuleProviders
+    format: yaml
+    path: "./rules/clash/WeChat.yaml"
+    url: https://magicrule.pages.dev/data/_shared/artifacts/WeChat_classical_b33d1fc8be9d6b0b.yaml
   Direct:
     <<: *RuleProviders
     path: "./rules/clash/Direct.list"
@@ -525,6 +530,7 @@ rules:
   - RULE-SET,LAN,DIRECT
   # 手动直连优先于通用分流规则
   - RULE-SET,DirectManual,DIRECT
+  - RULE-SET,WeChat,DIRECT
   - DOMAIN-SUFFIX,webdav.lianxinbo.workers.dev,香港节点
   - DOMAIN-SUFFIX,musicfree.catcat.work,香港节点
   - DOMAIN-SUFFIX,infini-cloud.net,香港节点

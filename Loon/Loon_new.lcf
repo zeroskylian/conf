@@ -96,6 +96,7 @@ https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list, polic
 https://kelee.one/Tool/Loon/Lsr/ApplePushNotificationService.lsr, policy=DIRECT, tag=Apple Push Notification Service, enabled=true
 https://kelee.one/Tool/Loon/Lsr/AppleAccount.lsr, policy=DIRECT, tag=Apple ID, enabled=true
 https://kelee.one/Tool/Loon/Lsr/AppStore.lsr, policy=DIRECT, tag=App Store, enabled=true
+https://magicrule.pages.dev/data/_shared/artifacts/Apple_rules_a498ae373471a17f.list, policy=DIRECT, tag=Apple, enabled=true
 
 # > Git
 https://magicrule.pages.dev/data/_shared/artifacts/GitHub_rules_02fb1aed89680882.list, policy=香港节点, tag=GitHub, enabled=true
@@ -109,10 +110,8 @@ https://magicrule.pages.dev/data/_shared/artifacts/SteamCN_rules_f86755549ad8ec6
 https://magicrule.pages.dev/data/_shared/artifacts/GameDownload_rules_99528f2898a794ff.list, policy=DIRECT, tag=GameDownloadCN, enabled=true
 https://magicrule.pages.dev/data/_shared/artifacts/Steam_rules_b6c1b99150c9ec4a.list, policy=香港节点, tag=Steam, enabled=true
 
-# > 基础分流
-https://kelee.one/Tool/Loon/Lsr/REGION_SPLITTER.lsr, policy=DIRECT, tag=CN REGION, enabled=true
 
-# > 其他
+# > AI
 https://kelee.one/Tool/Loon/Lsr/AI.lsr, policy=家宽节点, tag=AI, enabled=true
 https://raw.githubusercontent.com/logicrw/RuleGo/refs/heads/patch-1/Surge/Ruleset/Extra/GenAI/Meta.list, policy=美国节点, tag=Meta.list, enabled=true
 
@@ -141,6 +140,7 @@ https://magicrule.pages.dev/data/_shared/artifacts/Instagram_rules_7a25b214a1a85
 https://magicrule.pages.dev/data/_shared/artifacts/Netflix_rules_f3bd3eb7f4910286.list, policy=狮城节点, tag=Netflix, enabled=true
 https://magicrule.pages.dev/data/_shared/artifacts/YouTube_rules_329ca26de78c21fe.list, policy=香港节点, tag=Youtube, enabled=true
 https://magicrule.pages.dev/data/_shared/artifacts/Disney_rules_2299e55ecd61818f.list, policy=香港节点, tag=Disney, enabled=true
+https://magicrule.pages.dev/data/_shared/artifacts/WeChat_rules_5a1a50742ab40ca3.list, policy=DIRECT, tag=WeChat, enabled=true
 
 # > 游戏平台
 https://magicrule.pages.dev/data/_shared/artifacts/Epic_rules_b5bdc37880fb14aa.list, policy=DIRECT, tag=Epic, enabled=true
@@ -158,6 +158,9 @@ https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list, polic
 
 # > 广告拦截
 https://gitlab.com/zeroskylian/loon_rucu6/-/raw/main/Rules/PornAds.list, policy=REJECT, tag=PornAds, enabled=false
+
+# > 基础分流
+https://kelee.one/Tool/Loon/Lsr/REGION_SPLITTER.lsr, policy=DIRECT, tag=CN REGION, enabled=true
 
 [Host]
 

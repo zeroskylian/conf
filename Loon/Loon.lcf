@@ -96,6 +96,7 @@ https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Direct.list, polic
 https://kelee.one/Tool/Loon/Lsr/ApplePushNotificationService.lsr, policy=DIRECT, tag=Apple Push Notification Service, enabled=true
 https://kelee.one/Tool/Loon/Lsr/AppleAccount.lsr, policy=DIRECT, tag=Apple ID, enabled=true
 https://kelee.one/Tool/Loon/Lsr/AppStore.lsr, policy=DIRECT, tag=App Store, enabled=true
+https://magicrule.pages.dev/data/_shared/artifacts/Apple_rules_a498ae373471a17f.list, policy=DIRECT, tag=Apple, enabled=true
 
 # > 微软服务
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Microsoft/Microsoft.list, policy=DIRECT, tag=Microsoft, enabled=true
@@ -106,10 +107,7 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Game/GameDownloadCN/GameDownloadCN.list, policy=DIRECT, tag=GameDownloadCN, enabled=true
 https://raw.githubusercontent.com/zeroskylian/ios_rule_script/master/rule/Loon/Steam/Steam.list, policy=香港节点, tag=Steam, enabled=true
 
-# > 基础分流
-https://kelee.one/Tool/Loon/Lsr/REGION_SPLITTER.lsr, policy=DIRECT, tag=CN REGION, enabled=true
-
-# > 其他
+# > AI
 https://kelee.one/Tool/Loon/Lsr/AI.lsr, policy=家宽节点, tag=AI, enabled=true
 https://raw.githubusercontent.com/logicrw/RuleGo/refs/heads/patch-1/Surge/Ruleset/Extra/GenAI/Meta.list, policy=美国节点, tag=Meta.list, enabled=true
 
@@ -141,6 +139,7 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Netflix/Netflix.list, policy=狮城节点, tag=Netflix, enabled=true
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/YouTube/YouTube.list, policy=香港节点, tag=Youtube, enabled=true
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Disney/Disney.list, policy=香港节点, tag=Disney, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/WeChat/WeChat.list, policy=DIRECT, tag=WeChat, enabled=true
 
 # > 游戏平台
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Epic/Epic.list, policy=DIRECT, tag=Epic, enabled=true
@@ -158,6 +157,9 @@ https://raw.githubusercontent.com/zeroskylian/conf/main/Rules/Comics.list, polic
 
 # > 广告拦截
 https://gitlab.com/zeroskylian/loon_rucu6/-/raw/main/Rules/PornAds.list, policy=REJECT, tag=PornAds, enabled=false
+
+# > 基础分流
+https://kelee.one/Tool/Loon/Lsr/REGION_SPLITTER.lsr, policy=DIRECT, tag=CN REGION, enabled=true
 
 [Host]
 
