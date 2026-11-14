@@ -1,0 +1,80 @@
+#!name=番茄小说去广告（前置去重版）
+#!desc=配合可莉广告过滤器、HTTPDNS拦截器、广告平台拦截器使用，三者需启用并排在本插件之前。基于本地提供版本去重；HTTPS 复写需开启 MITM 并信任证书。
+#!author=奶思、zqzess、可莉（原规则作者）
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DragonRead.png
+#!openUrl=https://apps.apple.com/app/id1468454200
+#!tag=去广告
+#!date=2026-11-14
+
+# 基于用户当前的「番茄小说去广告_合并版.lpx」导出。
+# 已删除由三份前置插件覆盖的规则；本插件不适合脱离前置单独使用。
+
+[Rule]
+DOMAIN, i-lq.snssdk.com, REJECT
+DOMAIN, is-lq.snssdk.com, REJECT
+DOMAIN, activity-ag.awemeughun.com, REJECT
+# 前置广告平台拦截器有匹配此域名的 DIRECT 例外；前置优先时本条不会生效。
+DOMAIN, tnc3-alisc1.snssdk.com, REJECT
+DOMAIN, security-lq.snssdk.com, REJECT
+# 前置广告平台拦截器有匹配此域名的 DIRECT 例外；前置优先时本条不会生效。
+DOMAIN, tnc3-aliec2.snssdk.com, REJECT
+DOMAIN, v6-novelapp.ixigua.com, REJECT
+DOMAIN, msync-im1-vip6-std.easemob.com, REJECT
+DOMAIN, apd-pcdnwxlogin.teg.tencent-cloud.net, REJECT
+DOMAIN, api.iegadp.qq.com, REJECT
+DOMAIN-SUFFIX, novelapp.ixigua.com, REJECT
+DOMAIN-SUFFIX, default.ixigua.com, REJECT
+DOMAIN-SUFFIX, byteorge.com, REJECT
+IP-CIDR, 49.71.37.101/32, REJECT, no-resolve
+IP-CIDR, 117.71.105.23/32, REJECT, no-resolve
+IP-CIDR, 218.94.207.205/32, REJECT, no-resolve
+IP-CIDR, 117.92.229.188/32, REJECT, no-resolve
+IP-CIDR, 101.36.166.16/32, REJECT, no-resolve
+IP-CIDR, 180.96.2.114/32, REJECT, no-resolve
+DOMAIN-SUFFIX, byteimg.com, DIRECT
+DOMAIN, i.snssdk.com, REJECT
+DOMAIN-KEYWORD, zijieapi, REJECT
+DOMAIN, is.snssdk.com, REJECT
+DOMAIN, sf3-ttcdn-tos.pstatp.com, REJECT
+# 原来源提示：此整域拦截可能影响懂车帝；遇到问题可注释下一行。
+DOMAIN-SUFFIX, bytegoofy.com, REJECT
+# 原来源提示：此整域拦截可能影响懂车帝；遇到问题可注释下一行。
+DOMAIN-SUFFIX, bytedance.com, REJECT
+DOMAIN, zlink.ugsdk.cn, REJECT
+DOMAIN, mon.toutiaocloud.net, REJECT
+DOMAIN, lf-normal-gr-sourcecdn.bytegecko.com, REJECT
+DOMAIN, lf-webcast-gr-sourcecdn.bytegecko.com, REJECT
+DOMAIN, p3-developer.bytemaimg.com, REJECT
+DOMAIN, webcast-open.douyin.com, REJECT
+DOMAIN, p11-webcast-sign.douyinpic.com, REJECT
+DOMAIN, p3-webcast-sign.douyinpic.com, REJECT
+DOMAIN, log3-applog.fqnovel.com, REJECT
+DOMAIN, log5-applog.fqnovel.com, REJECT
+DOMAIN, mon11-misc-lq.fqnovel.com, REJECT
+DOMAIN, mon11-misc.fqnovel.com, REJECT
+DOMAIN, mon3-misc.fqnovel.com, REJECT
+DOMAIN, rtlog3-applog.fqnovel.com, REJECT
+DOMAIN, rtlog5-applog.fqnovel.com, REJECT
+DOMAIN, effect.snssdk.com, REJECT
+DOMAIN, security.snssdk.com, REJECT
+DOMAIN, vas.snssdk.com, REJECT
+DOMAIN, mon.toutiaocloud.com, REJECT
+
+[Rewrite]
+# pangolin、pglstatp 已由前置拦截；混合复写仅保留 pstatp 分支。
+^https?:\/\/.+\.pstatp\.com\/(obj|img)\/(ad-app-package|ad)\/.+ reject
+^https?:\/\/.+\.pstatp\.com\/(obj|img)\/web\.business\.image\/.+ reject
+^https?:\/\/.+\.pstatp\.com\/obj\/ad-pattern\/renderer reject
+^https?:\/\/gurd\.snssdk\.com\/src\/server\/v3\/package reject
+^https?:\/\/.+\.byteimg.com/tos-cn-i-1yzifmftcy\/(.+)-jpeg\.jpeg reject
+^https?:\/\/.+\.pstatp\.com\/obj\/mosaic-legacy\/.+\?from\=ad reject
+^https?:\/\/.+\.pstatp\.com\/bytecom\/resource\/track_log\/src\/.+ reject
+^https?:\/\/.+\.snssdk\.com\/video\/play\/1\/toutiao\/.+\/mp4 reject
+^https?:\/\/.+\.snssdk.com\/api\/ad\/.+ reject
+^https?:\/\/.+\.byteimg\.com\/ad-app-package reject
+^https?:\/\/.+\.byteimg\.com\/web\.business\.image reject
+# 原来源未确认所属 App 的规则，按当前启用状态保留。
+^https?:\/\/.+?\.snssdk\.com\/motor\/operation\/activity\/display\/config\/V2\/ reject
+
+[MITM]
+hostname = *.pstatp.com, *.snssdk.com, *.byteimg.com
